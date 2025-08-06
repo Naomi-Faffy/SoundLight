@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const focusableElements = document.querySelectorAll('a, button, input, select, textarea');
     focusableElements.forEach(el => {
         el.addEventListener('focus', function() {
-            this.style.outline = '2px solid #2ECC71';
+            this.style.outline = '2px solid #30A848';
             this.style.outlineOffset = '2px';
         });
         

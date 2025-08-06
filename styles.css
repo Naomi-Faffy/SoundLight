@@ -7,19 +7,23 @@
 
 :root {
     /* Exquisite Brand Color Palette */
-    --exquisite-green: #2ECC71;
-    --exquisite-blue: #1E3A8A;
-    --jet-black: #0A0A0A;
+    --exquisite-green: #30A848;
+    --luxury-navy: #1C355E;
+    --cool-white: #FFFFFF;
+    --metallic-gray: #C5CDD7;
+    --sleek-black: #000000;
+    
+    /* Legacy color mappings for consistency */
+    --jet-black: #000000;
     --pearl-white: #F8F8F8;
     --pure-white: #FFFFFF;
-    --carbon-gray: #333333;
-    --metallic-silver: #C0C0C0;
+    --carbon-gray: #1C355E;
     
     /* Additional Shades */
-    --soft-green: rgba(46, 204, 113, 0.1);
-    --soft-blue: rgba(30, 58, 138, 0.1);
-    --deep-black: rgba(10, 10, 10, 0.95);
-    --light-gray: rgba(192, 192, 192, 0.2);
+    --soft-green: rgba(48, 168, 72, 0.1);
+    --soft-navy: rgba(28, 53, 94, 0.1);
+    --deep-black: rgba(0, 0, 0, 0.95);
+    --light-gray: rgba(197, 205, 215, 0.3);
     
     /* Typography */
     --font-serif: 'Playfair Display', serif;
@@ -38,7 +42,7 @@ html {
 body {
     font-family: var(--font-sans);
     line-height: 1.6;
-    color: var(--jet-black);
+    color: var(--luxury-navy);
     background-color: var(--pearl-white);
     overflow-x: hidden;
     transition: all 0.3s ease;
@@ -110,9 +114,9 @@ body {
 }
 
 .nav-logo img {
-    height: 50px;
+    height: 35px;
     width: auto;
-    filter: brightness(0) invert(1);
+    filter: none;
 }
 
 .nav-menu {
@@ -264,7 +268,7 @@ body {
 
 .cta-button.primary {
     background: var(--exquisite-green);
-    color: var(--jet-black);
+    color: var(--cool-white);
     border-color: var(--exquisite-green);
 }
 
@@ -272,7 +276,7 @@ body {
     background: transparent;
     color: var(--exquisite-green);
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
+    box-shadow: 0 10px 30px rgba(48, 168, 72, 0.3);
 }
 
 .cta-button.secondary {
@@ -328,7 +332,7 @@ body {
     font-family: var(--font-serif);
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    color: var(--jet-black);
+    color: var(--luxury-navy);
     margin-bottom: 20px;
     position: relative;
 }
@@ -414,7 +418,7 @@ body {
 
 .view-details {
     background: var(--exquisite-green);
-    color: var(--jet-black);
+    color: var(--cool-white);
     border: none;
     padding: 15px 30px;
     font-weight: 600;
@@ -426,7 +430,7 @@ body {
 }
 
 .view-details:hover {
-    background: var(--pearl-white);
+    background: var(--luxury-navy);
     transform: scale(1.05);
 }
 
@@ -439,7 +443,7 @@ body {
     font-family: var(--font-serif);
     font-size: 28px;
     font-weight: 600;
-    color: var(--jet-black);
+    color: var(--luxury-navy);
     margin-bottom: 8px;
 }
 
@@ -460,8 +464,8 @@ body {
 
 .car-action {
     background: transparent;
-    color: var(--jet-black);
-    border: 2px solid var(--jet-black);
+    color: var(--luxury-navy);
+    border: 2px solid var(--luxury-navy);
     padding: 12px 25px;
     font-weight: 500;
     font-size: 12px;
@@ -473,8 +477,8 @@ body {
 }
 
 .car-action:hover {
-    background: var(--jet-black);
-    color: var(--pearl-white);
+    background: var(--luxury-navy);
+    color: var(--cool-white);
 }
 
 /* Services Section */
@@ -527,14 +531,14 @@ body {
 }
 
 .service-card:hover .service-icon i {
-    color: var(--jet-black);
+    color: var(--cool-white);
 }
 
 .service-card h3 {
     font-family: var(--font-serif);
     font-size: 24px;
     font-weight: 600;
-    color: var(--jet-black);
+    color: var(--luxury-navy);
     margin-bottom: 20px;
 }
 
@@ -671,7 +675,7 @@ body {
 .testimonial-author strong {
     font-family: var(--font-serif);
     font-size: 18px;
-    color: var(--jet-black);
+    color: var(--luxury-navy);
     display: block;
     margin-bottom: 5px;
 }
@@ -749,7 +753,7 @@ body {
 .social-links a:hover {
     background: var(--exquisite-green);
     border-color: var(--exquisite-green);
-    color: var(--jet-black);
+    color: var(--cool-white);
     transform: translateY(-3px);
 }
 
@@ -781,7 +785,7 @@ body {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--exquisite-green);
-    box-shadow: 0 0 20px rgba(46, 204, 113, 0.2);
+    box-shadow: 0 0 20px rgba(48, 168, 72, 0.2);
 }
 
 .form-group input::placeholder,
@@ -859,7 +863,7 @@ body {
 .footer-social a:hover {
     background: var(--exquisite-green);
     border-color: var(--exquisite-green);
-    color: var(--jet-black);
+    color: var(--cool-white);
 }
 
 .footer-bottom {

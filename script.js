@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Observe elements for animations
-    const animatedElements = document.querySelectorAll('.glass-card, .car-card, .partner-glass-card, .testimonial-glass-card');
+    const animatedElements = document.querySelectorAll('.glass-card, .car-card, .partner-glass-card, .testimonial-glass-card, .contact-info-glass, .contact-form-glass');
     animatedElements.forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Add loading class to elements for staggered animations
-        const elements = document.querySelectorAll('.hero-content, .section-title, .car-card, .glass-card, .partner-glass-card, .testimonial-glass-card');
+        const elements = document.querySelectorAll('.hero-content, .section-title, .car-card, .glass-card, .partner-glass-card, .testimonial-glass-card, .contact-info-glass, .contact-form-glass');
         elements.forEach((el, index) => {
             el.classList.add('loading');
             el.style.animationDelay = `${index * 0.1}s`;
@@ -359,6 +359,44 @@ document.addEventListener('DOMContentLoaded', function() {
         setInterval(rotateTestimonialsGlass, 5000);
         setTimeout(rotateTestimonialsGlass, 2000); // Initial call after animations
     }
+    
+    // Contact Glass Cards Setup
+    const contactGlassCards = document.querySelectorAll('.contact-info-glass, .contact-form-glass');
+    contactGlassCards.forEach((card, index) => {
+        card.style.animationDelay = `${(index * 0.3) + 2.0}s`;
+        
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-12px) scale(1.02)';
+            this.style.boxShadow = '0 40px 80px rgba(0, 0, 0, 0.4)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.3)';
+        });
+    });
+    
+    // Glass Form Input Focus Effects
+    const glassInputs = document.querySelectorAll('.form-group-glass input, .form-group-glass select, .form-group-glass textarea');
+    glassInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.querySelector('.input-icon').style.color = '#60a5fa';
+            this.parentElement.querySelector('.input-icon').style.transform = 'scale(1.1)';
+        });
+        
+        input.addEventListener('blur', function() {
+            this.parentElement.querySelector('.input-icon').style.color = '#2eaa5f';
+            this.parentElement.querySelector('.input-icon').style.transform = 'scale(1)';
+        });
+    });
+    
+    // Social Glass Links Animation
+    const socialGlassLinks = document.querySelectorAll('.social-glass-link');
+    socialGlassLinks.forEach((link, index) => {
+        link.style.animationDelay = `${2.5 + (index * 0.1)}s`;
+        link.style.animation = 'glassCardAppear 0.8s ease-out forwards';
+        link.style.opacity = '0';
+    });
     
 
     

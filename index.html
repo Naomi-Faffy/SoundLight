@@ -334,58 +334,136 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with Glass Morphism -->
     <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Begin Your Journey</h2>
-                    <p>Experience the pinnacle of automotive luxury with personalized service tailored to your vision.</p>
+        <div class="contact-overlay">
+            <div class="contact-header">
+                <h2 class="contact-main-title">BEGIN YOUR JOURNEY</h2>
+                <p class="contact-subtitle">Experience the pinnacle of automotive luxury with personalized service</p>
+            </div>
+            
+            <div class="contact-glass-grid">
+                <!-- Contact Information Glass Card -->
+                <div class="contact-info-glass">
+                    <div class="contact-glass-header">
+                        <div class="contact-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        <h3 class="contact-glass-title">LUXURY CONCIERGE SERVICE</h3>
+                        <p class="contact-glass-description">Our dedicated team provides white-glove service tailored to your discerning preferences</p>
+                    </div>
                     
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+1 (555) 123-LUXURY</span>
+                    <div class="contact-details-glass">
+                        <div class="contact-item-glass">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <span class="contact-label">Exclusive Hotline</span>
+                                <span class="contact-value">+1 (555) 123-LUXURY</span>
+                            </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>concierge@exquisitecars.com</span>
+                        
+                        <div class="contact-item-glass">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <span class="contact-label">Private Email</span>
+                                <span class="contact-value">concierge@exquisitecars.com</span>
+                            </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Beverly Hills, California</span>
+                        
+                        <div class="contact-item-glass">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <span class="contact-label">Premier Location</span>
+                                <span class="contact-value">Beverly Hills, California</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item-glass">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <span class="contact-label">Available Hours</span>
+                                <span class="contact-value">Mon-Sat: 9AM-7PM | Sun: By Appointment</span>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="social-links">
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <div class="social-links-glass">
+                        <a href="#" aria-label="Instagram" class="social-glass-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="social-glass-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" aria-label="YouTube" class="social-glass-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="social-glass-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Full Name" required>
+                <!-- Contact Form Glass Card -->
+                <div class="contact-form-glass">
+                    <div class="form-glass-header">
+                        <div class="form-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <h3 class="form-glass-title">PRIVATE CONSULTATION REQUEST</h3>
+                        <p class="form-glass-description">Share your vision and we'll curate the perfect luxury automotive experience</p>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <select id="interest" name="interest" required>
-                            <option value="">Service Interest</option>
-                            <option value="purchase">Vehicle Purchase</option>
-                            <option value="lease">Luxury Lease</option>
-                            <option value="consultation">Private Consultation</option>
-                            <option value="testdrive">Exclusive Test Drive</option>
-                            <option value="collection">Collection Viewing</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Tell us about your vision" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="cta-button primary full-width">Submit Inquiry</button>
-                </form>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group-glass">
+                            <div class="input-glass-container">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="name" name="name" placeholder="Full Name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group-glass">
+                            <div class="input-glass-container">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group-glass">
+                            <div class="input-glass-container">
+                                <i class="fas fa-car input-icon"></i>
+                                <select id="interest" name="interest" required>
+                                    <option value="">Service Interest</option>
+                                    <option value="purchase">Luxury Vehicle Purchase</option>
+                                    <option value="lease">Premium Lease Program</option>
+                                    <option value="consultation">Private Consultation</option>
+                                    <option value="testdrive">Exclusive Test Drive Experience</option>
+                                    <option value="collection">Private Collection Viewing</option>
+                                    <option value="customization">Bespoke Customization</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group-glass">
+                            <div class="input-glass-container">
+                                <i class="fas fa-comment-dots input-icon"></i>
+                                <textarea id="message" name="message" placeholder="Tell us about your luxury automotive vision..." rows="4"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="glass-submit-button">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>SUBMIT EXCLUSIVE INQUIRY</span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>

@@ -667,83 +667,236 @@ body {
 
 
 
-/* Trust Section */
+/* Trust Section with Glass Morphism */
 .trust {
-    padding: var(--section-padding);
-    background: var(--pure-white);
-    border: 5px solid var(--jet-black);
-    border-radius: 8px;
-    margin: 20px auto;
-    max-width: 95%;
-}
-
-.media-partners {
+    position: relative;
+    min-height: 100vh;
+    background: url('aston-martin-db11.jpg') center center;
+    background-size: cover;
+    background-attachment: fixed;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 80px;
-    margin-bottom: 80px;
-    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.partner-logo {
+.trust::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.trust-overlay {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 80px 20px;
+}
+
+.trust-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.trust-main-title {
     font-family: var(--font-serif);
-    font-size: 24px;
+    font-size: 48px;
     font-weight: 700;
-    color: var(--carbon-gray);
-    opacity: 0.6;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    color: var(--pearl-white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-.partner-logo:hover {
-    opacity: 1;
+.trust-subtitle {
+    font-size: 20px;
     color: var(--exquisite-green);
-    transform: scale(1.1);
+    font-weight: 300;
+    letter-spacing: 1px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.testimonials-grid {
+/* Media Partners Glass Cards */
+.media-partners-glass {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    width: 100%;
+    margin-bottom: 80px;
 }
 
-.testimonial-card {
-    background: var(--pearl-white);
-    padding: 40px;
-    border-left: 4px solid var(--exquisite-green);
+.partner-glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+}
+
+.partner-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.5s ease;
+}
+
+.partner-glass-card:hover::before {
+    left: 100%;
+}
+
+.partner-glass-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.partner-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--exquisite-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
     transition: all 0.3s ease;
 }
 
-.testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+.partner-icon i {
+    font-size: 28px;
+    color: var(--pure-white);
 }
 
-.testimonial-content {
-    margin-bottom: 25px;
+.partner-glass-card:hover .partner-icon {
+    transform: scale(1.1);
+    background: #2a8f5f;
 }
 
-.testimonial-content p {
+.partner-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--pearl-white);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.partner-description {
+    font-size: 14px;
+    color: var(--pearl-white);
+    opacity: 0.9;
+    line-height: 1.5;
     font-style: italic;
+}
+
+/* Testimonials Glass Cards */
+.testimonials-glass-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.testimonial-glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+}
+
+.testimonial-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.testimonial-glass-card:hover::before {
+    left: 100%;
+}
+
+.testimonial-glass-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+}
+
+.testimonial-quote {
+    margin-bottom: 20px;
+}
+
+.testimonial-quote i {
+    font-size: 36px;
+    color: var(--exquisite-green);
+    opacity: 0.8;
+}
+
+.testimonial-text {
     font-size: 16px;
-    line-height: 1.8;
-    color: var(--carbon-gray);
+    color: var(--pearl-white);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 25px;
+    opacity: 0.95;
 }
 
 .testimonial-author strong {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    color: var(--luxury-navy);
     display: block;
-    margin-bottom: 5px;
+    font-size: 18px;
+    color: var(--pearl-white);
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .testimonial-author span {
-    font-size: 14px;
     color: var(--exquisite-green);
+    font-size: 14px;
+    font-weight: 300;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 /* Contact Section */
@@ -983,6 +1136,16 @@ body {
         gap: 30px;
     }
     
+    /* Trust Section Desktop */
+    .media-partners-glass {
+        max-width: 800px;
+        gap: 25px;
+    }
+    
+    .testimonials-glass-grid {
+        max-width: 1000px;
+        gap: 25px;
+    }
 
 }
 
@@ -1055,6 +1218,38 @@ body {
         font-size: 18px;
     }
     
+    /* Trust Section Tablet Styles */
+    .trust {
+        background-attachment: scroll;
+        min-height: auto;
+    }
+    
+    .trust-overlay {
+        padding: 60px 20px;
+    }
+    
+    .trust-header {
+        margin-bottom: 50px;
+    }
+    
+    .trust-main-title {
+        font-size: 36px;
+    }
+    
+    .trust-subtitle {
+        font-size: 18px;
+    }
+    
+    .media-partners-glass {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-bottom: 60px;
+    }
+    
+    .testimonials-glass-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
 
     
     .media-partners {
@@ -1154,6 +1349,40 @@ body {
         margin-bottom: 30px;
     }
     
+    /* Trust Section Mobile Styles */
+    .trust-main-title {
+        font-size: 28px;
+    }
+    
+    .trust-subtitle {
+        font-size: 16px;
+    }
+    
+    .trust-header {
+        margin-bottom: 40px;
+    }
+    
+    .partner-glass-card {
+        padding: 25px 20px;
+        min-height: 180px;
+    }
+    
+    .partner-title {
+        font-size: 18px;
+    }
+    
+    .partner-description {
+        font-size: 13px;
+    }
+    
+    .testimonial-glass-card {
+        padding: 30px 25px;
+        min-height: 250px;
+    }
+    
+    .testimonial-text {
+        font-size: 15px;
+    }
 
     
     .testimonial-card {

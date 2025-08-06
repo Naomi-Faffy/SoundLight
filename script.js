@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Observe elements for animations
-    const animatedElements = document.querySelectorAll('.glass-card, .car-card, .testimonial-card');
+    const animatedElements = document.querySelectorAll('.glass-card, .car-card, .partner-glass-card, .testimonial-glass-card');
     animatedElements.forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Add loading class to elements for staggered animations
-        const elements = document.querySelectorAll('.hero-content, .section-title, .car-card, .glass-card');
+        const elements = document.querySelectorAll('.hero-content, .section-title, .car-card, .glass-card, .partner-glass-card, .testimonial-glass-card');
         elements.forEach((el, index) => {
             el.classList.add('loading');
             el.style.animationDelay = `${index * 0.1}s`;
@@ -279,6 +279,42 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Glass Cards Hover Animation
     glassCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+            this.style.boxShadow = '0 35px 70px rgba(0, 0, 0, 0.4)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.3)';
+        });
+    });
+    
+    // Partner Glass Cards Setup
+    const partnerGlassCards = document.querySelectorAll('.partner-glass-card');
+    partnerGlassCards.forEach((card, index) => {
+        card.style.animationDelay = `${(index * 0.15) + 0.8}s`;
+        card.style.animation = 'glassCardAppear 1s ease-out forwards';
+        card.style.opacity = '0';
+        
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+            this.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.4)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.2)';
+        });
+    });
+    
+    // Testimonial Glass Cards Setup
+    const testimonialGlassCards = document.querySelectorAll('.testimonial-glass-card');
+    testimonialGlassCards.forEach((card, index) => {
+        card.style.animationDelay = `${(index * 0.2) + 1.3}s`;
+        card.style.animation = 'glassCardAppear 1.2s ease-out forwards';
+        card.style.opacity = '0';
+        
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px) scale(1.02)';
             this.style.boxShadow = '0 35px 70px rgba(0, 0, 0, 0.4)';
@@ -303,9 +339,25 @@ document.addEventListener('DOMContentLoaded', function() {
         currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
     }
     
-    // Start testimonial rotation
-    if (testimonialCards.length > 1) {
-        setInterval(rotateTestimonials, 5000);
+    // Testimonial Glass Cards Subtle Animation
+    function rotateTestimonialsGlass() {
+        testimonialGlassCards.forEach((card, index) => {
+            if (index === currentTestimonial) {
+                card.style.transform = 'translateY(-5px) scale(1.01)';
+                card.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.35)';
+            } else {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.3)';
+            }
+        });
+        
+        currentTestimonial = (currentTestimonial + 1) % testimonialGlassCards.length;
+    }
+    
+    // Start testimonial glass cards rotation
+    if (testimonialGlassCards.length > 1) {
+        setInterval(rotateTestimonialsGlass, 5000);
+        setTimeout(rotateTestimonialsGlass, 2000); // Initial call after animations
     }
     
 

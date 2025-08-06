@@ -361,6 +361,10 @@ body {
 .collection {
     padding: var(--section-padding);
     background: var(--pure-white);
+    border: 2px solid var(--jet-black);
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 95%;
 }
 
 .collection-grid {
@@ -486,6 +490,10 @@ body {
 .services {
     padding: var(--section-padding);
     background: var(--pearl-white);
+    border: 2px solid var(--jet-black);
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 95%;
 }
 
 .services-grid {
@@ -555,6 +563,10 @@ body {
 .trust {
     padding: var(--section-padding);
     background: var(--pure-white);
+    border: 2px solid var(--jet-black);
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 95%;
 }
 
 .media-partners {
@@ -746,7 +758,10 @@ body {
 .footer {
     background: var(--pure-white);
     padding: 60px 0 30px;
-    border-top: 1px solid var(--light-gray);
+    border: 2px solid var(--jet-black);
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 95%;
 }
 
 .footer-content {

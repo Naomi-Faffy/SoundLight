@@ -361,7 +361,7 @@ body {
 .collection {
     padding: var(--section-padding);
     background: var(--pure-white);
-    border: 2px solid var(--jet-black);
+    border: 5px solid var(--jet-black);
     border-radius: 8px;
     margin: 20px auto;
     max-width: 95%;
@@ -369,8 +369,8 @@ body {
 
 .collection-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
 }
 
 .car-card {
@@ -490,7 +490,7 @@ body {
 .services {
     padding: var(--section-padding);
     background: var(--pearl-white);
-    border: 2px solid var(--jet-black);
+    border: 5px solid var(--jet-black);
     border-radius: 8px;
     margin: 20px auto;
     max-width: 95%;
@@ -563,7 +563,7 @@ body {
 .trust {
     padding: var(--section-padding);
     background: var(--pure-white);
-    border: 2px solid var(--jet-black);
+    border: 5px solid var(--jet-black);
     border-radius: 8px;
     margin: 20px auto;
     max-width: 95%;
@@ -758,7 +758,7 @@ body {
 .footer {
     background: var(--pure-white);
     padding: 60px 0 30px;
-    border: 2px solid var(--jet-black);
+    border: 5px solid var(--jet-black);
     border-radius: 8px;
     margin: 20px auto;
     max-width: 95%;

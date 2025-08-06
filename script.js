@@ -43,12 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', function() {
         const currentScrollY = window.scrollY;
         
-        if (currentScrollY > 100) {
-            navbar.style.background = 'rgba(10, 10, 10, 0.98)';
-            navbar.style.backdropFilter = 'blur(20px)';
-        } else {
-            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-        }
+        // Keep navbar transparent - no background changes
         
         // Hide/show navbar on scroll
         if (currentScrollY > lastScrollY && currentScrollY > 200) {
@@ -130,23 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Lifestyle Section Parallax Effect
-    const lifestyleItems = document.querySelectorAll('.lifestyle-item');
-    
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
-        
-        lifestyleItems.forEach(item => {
-            const rect = item.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                const img = item.querySelector('img');
-                if (img) {
-                    img.style.transform = `translateY(${parallax * 0.1}px)`;
-                }
-            }
-        });
-    });
+
     
     // Contact Form Handling
     const contactForm = document.getElementById('contactForm');

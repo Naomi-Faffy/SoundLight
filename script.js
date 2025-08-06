@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Observe elements for animations
-    const animatedElements = document.querySelectorAll('.service-card, .car-card, .testimonial-card');
+    const animatedElements = document.querySelectorAll('.glass-card, .car-card, .testimonial-card');
     animatedElements.forEach(el => {
         el.classList.add('fade-in');
         observer.observe(el);
@@ -127,6 +127,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     
+    // Glass Card CTA Button
+    const glassCTA = document.querySelector('.glass-cta');
+    if (glassCTA) {
+        glassCTA.addEventListener('click', function() {
+            document.getElementById('collection').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    }
+
     // Contact Form Handling
     const contactForm = document.getElementById('contactForm');
     
@@ -259,26 +270,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Add loading class to elements for staggered animations
-        const elements = document.querySelectorAll('.hero-content, .section-title, .car-card, .service-card');
+        const elements = document.querySelectorAll('.hero-content, .section-title, .car-card, .glass-card');
         elements.forEach((el, index) => {
             el.classList.add('loading');
             el.style.animationDelay = `${index * 0.1}s`;
         });
     });
     
-    // Service Cards Hover Animation
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            const icon = card.querySelector('.service-icon');
-            icon.style.transform = 'scale(1.1) rotateY(180deg)';
+    // Glass Card Animation
+    const glassCard = document.querySelector('.glass-card');
+    if (glassCard) {
+        glassCard.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.02)';
+            this.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.4)';
         });
         
-        card.addEventListener('mouseleave', function() {
-            const icon = card.querySelector('.service-icon');
-            icon.style.transform = 'scale(1) rotateY(0deg)';
+        glassCard.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.3)';
         });
-    });
+    }
     
     // Testimonial Cards Rotation
     const testimonialCards = document.querySelectorAll('.testimonial-card');

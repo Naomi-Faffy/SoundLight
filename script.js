@@ -277,19 +277,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Glass Card Animation
-    const glassCard = document.querySelector('.glass-card');
-    if (glassCard) {
-        glassCard.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.02)';
-            this.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.4)';
+    // Glass Cards Hover Animation
+    glassCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+            this.style.boxShadow = '0 35px 70px rgba(0, 0, 0, 0.4)';
         });
         
-        glassCard.addEventListener('mouseleave', function() {
+        card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
             this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.3)';
         });
-    }
+    });
     
     // Testimonial Cards Rotation
     const testimonialCards = document.querySelectorAll('.testimonial-card');

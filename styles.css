@@ -514,10 +514,62 @@ body {
     position: relative;
     z-index: 2;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
+    padding: 60px 20px;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.services-main-title {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--pearl-white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.services-subtitle {
+    font-size: 20px;
+    color: var(--exquisite-green);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 900px;
+    }
+    
+    .glass-card {
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 }
 
 .glass-card {
@@ -526,21 +578,29 @@ body {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 24px;
-    padding: 60px 50px;
-    max-width: 600px;
+    padding: 40px 30px;
     text-align: center;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
-    animation: glassCardAppear 1s ease-out;
+    animation: glassCardAppear 1.2s ease-out;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @keyframes glassCardAppear {
     0% {
         opacity: 0;
-        transform: translateY(30px) scale(0.95);
-        filter: blur(10px);
+        transform: translateY(50px) scale(0.9);
+        filter: blur(15px);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateY(25px) scale(0.95);
+        filter: blur(8px);
     }
     100% {
         opacity: 1;
@@ -564,51 +624,45 @@ body {
     left: 100%;
 }
 
-.glass-title {
+.glass-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--exquisite-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    transition: all 0.3s ease;
+}
+
+.glass-icon i {
+    font-size: 36px;
+    color: var(--pure-white);
+}
+
+.glass-card:hover .glass-icon {
+    transform: scale(1.1);
+    background: #2a8f5f;
+    box-shadow: 0 15px 30px rgba(46, 143, 95, 0.4);
+}
+
+.glass-card-title {
     font-family: var(--font-serif);
-    font-size: 42px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--pearl-white);
-    line-height: 1.1;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.glass-subtitle {
-    font-family: var(--font-sans);
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--exquisite-green);
-    margin-bottom: 25px;
-}
-
-.glass-description {
-    font-size: 18px;
+.glass-card-description {
+    font-size: 16px;
     color: var(--pearl-white);
     line-height: 1.7;
-    margin-bottom: 40px;
     font-weight: 300;
-}
-
-.glass-cta {
-    background: var(--exquisite-green);
-    color: var(--pure-white);
-    border: none;
-    padding: 18px 40px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.glass-cta:hover {
-    background: #2a8f5f;
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(46, 143, 95, 0.5);
+    opacity: 0.9;
 }
 
 
@@ -961,28 +1015,44 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
     .glass-card {
-        margin: 20px;
-        padding: 40px 30px;
-        max-width: calc(100% - 40px);
+        margin: 0 10px;
+        padding: 35px 25px;
     }
     
-    .glass-title {
-        font-size: 32px;
-        line-height: 1.2;
-    }
-    
-    .glass-subtitle {
+    .glass-card-title {
         font-size: 20px;
     }
     
-    .glass-description {
-        font-size: 16px;
+    .glass-card-description {
+        font-size: 15px;
     }
     
     .services {
         background-attachment: scroll;
-        height: 100vh;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .services-overlay {
+        padding: 40px 20px;
+    }
+    
+    .services-header {
+        margin-bottom: 40px;
+    }
+    
+    .services-main-title {
+        font-size: 36px;
+    }
+    
+    .services-subtitle {
+        font-size: 18px;
     }
     
 
@@ -1051,17 +1121,37 @@ body {
     }
     
     .glass-card {
-        margin: 15px;
+        margin: 0 5px;
         padding: 30px 20px;
-        max-width: calc(100% - 30px);
     }
     
-    .glass-title {
+    .glass-card-title {
+        font-size: 18px;
+    }
+    
+    .glass-card-description {
+        font-size: 14px;
+    }
+    
+    .glass-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .glass-icon i {
+        font-size: 30px;
+    }
+    
+    .services-main-title {
         font-size: 28px;
     }
     
-    .glass-subtitle {
-        font-size: 18px;
+    .services-subtitle {
+        font-size: 16px;
+    }
+    
+    .services-header {
+        margin-bottom: 30px;
     }
     
 

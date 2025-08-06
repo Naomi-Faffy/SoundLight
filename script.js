@@ -1,36 +1,7 @@
 // Exquisite Cars - Interactive Features
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Dark Mode Toggle
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-    
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('exquisite-theme');
-    if (savedTheme) {
-        body.setAttribute('data-theme', savedTheme);
-        updateDarkModeIcon(savedTheme === 'dark');
-    }
-    
-    darkModeToggle.addEventListener('click', function() {
-        const currentTheme = body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('exquisite-theme', newTheme);
-        updateDarkModeIcon(newTheme === 'dark');
-        
-        // Add transition class for smooth theme switching
-        body.style.transition = 'all 0.3s ease';
-        setTimeout(() => {
-            body.style.transition = '';
-        }, 300);
-    });
-    
-    function updateDarkModeIcon(isDark) {
-        const icon = darkModeToggle.querySelector('i');
-        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-    }
+
     
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
@@ -348,46 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setInterval(rotateTestimonials, 5000);
     }
     
-    // Luxury Cursor Effect
-    const cursor = document.createElement('div');
-    cursor.className = 'luxury-cursor';
-    cursor.style.cssText = `
-        width: 20px;
-        height: 20px;
-        background: #D4AF37;
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 10000;
-        opacity: 0;
-        transition: all 0.3s ease;
-        mix-blend-mode: difference;
-    `;
-    document.body.appendChild(cursor);
-    
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX - 10 + 'px';
-        cursor.style.top = e.clientY - 10 + 'px';
-        cursor.style.opacity = '1';
-    });
-    
-    document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
-    });
-    
-    // Hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .car-card, .service-card');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(2)';
-            cursor.style.background = 'rgba(212, 175, 55, 0.5)';
-        });
-        
-        el.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-            cursor.style.background = '#D4AF37';
-        });
-    });
+
     
     // Performance Optimization
     let ticking = false;
@@ -421,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const focusableElements = document.querySelectorAll('a, button, input, select, textarea');
     focusableElements.forEach(el => {
         el.addEventListener('focus', function() {
-            this.style.outline = '2px solid #D4AF37';
+            this.style.outline = '2px solid #2ECC71';
             this.style.outlineOffset = '2px';
         });
         
@@ -473,9 +405,7 @@ const mobileStyles = `
             letter-spacing: 2px;
         }
         
-        .luxury-cursor {
-            display: none !important;
-        }
+
     }
 `;
 

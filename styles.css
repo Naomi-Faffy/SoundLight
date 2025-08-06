@@ -490,7 +490,7 @@ body {
 .services {
     position: relative;
     height: 100vh;
-    background: url('lexus-background.jpg') center center;
+    background: url('landcruiser-lc300-showroom1.jpg') center center;
     background-size: cover;
     background-attachment: fixed;
     display: flex;
@@ -506,7 +506,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
@@ -671,7 +671,7 @@ body {
 .trust {
     position: relative;
     min-height: 100vh;
-    background: url('aston-martin-db11.jpg') center center;
+    background: url('landcruiser-lc300-showroom2.jpg') center center;
     background-size: cover;
     background-attachment: fixed;
     display: flex;
@@ -687,7 +687,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.55);
     z-index: 1;
 }
 

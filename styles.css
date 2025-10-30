@@ -540,7 +540,7 @@ body {
 
 .services-subtitle {
     font-size: 20px;
-    color: var(--exquisite-green);
+    color: var(--primary-blue);
     font-weight: 300;
     letter-spacing: 1px;
 }
@@ -627,7 +627,7 @@ body {
 .glass-icon {
     width: 80px;
     height: 80px;
-    background: var(--exquisite-green);
+    background: var(--primary-blue);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -721,7 +721,7 @@ body {
 
 .trust-subtitle {
     font-size: 20px;
-    color: var(--exquisite-green);
+    color: var(--primary-blue);
     font-weight: 300;
     letter-spacing: 1px;
     max-width: 600px;
@@ -780,7 +780,7 @@ body {
 .partner-icon {
     width: 60px;
     height: 60px;
-    background: var(--exquisite-green);
+    background: var(--primary-blue);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -870,7 +870,7 @@ body {
 
 .testimonial-quote i {
     font-size: 36px;
-    color: var(--exquisite-green);
+    color: var(--primary-blue);
     opacity: 0.8;
 }
 
@@ -892,7 +892,7 @@ body {
 }
 
 .testimonial-author span {
-    color: var(--exquisite-green);
+    color: var(--primary-blue);
     font-size: 14px;
     font-weight: 300;
     text-transform: uppercase;
@@ -946,12 +946,12 @@ body {
     letter-spacing: 3px;
     margin-bottom: 20px;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(45deg, var(--luxury-navy), var(--exquisite-green), #60a5fa);
+    background: linear-gradient(45deg, var(--dark-blue), var(--primary-blue), #60a5fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     /* Fallback for browsers that don't support background-clip */
-    color: var(--luxury-navy);
+    color: var(--dark-blue);
 }
 
 .contact-subtitle {
@@ -1018,7 +1018,7 @@ body {
 .contact-icon {
     width: 90px;
     height: 90px;
-    background: linear-gradient(135deg, var(--exquisite-green), #60a5fa);
+    background: linear-gradient(135deg, var(--primary-blue), #60a5fa);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1035,7 +1035,7 @@ body {
 
 .contact-info-glass:hover .contact-icon {
     transform: scale(1.1) rotate(5deg);
-    background: linear-gradient(135deg, #60a5fa, var(--exquisite-green));
+    background: linear-gradient(135deg, #60a5fa, var(--primary-blue));
     box-shadow: 0 20px 40px rgba(96, 165, 250, 0.4);
 }
 
@@ -1043,7 +1043,7 @@ body {
     font-family: var(--font-serif);
     font-size: 24px;
     font-weight: 700;
-    color: var(--luxury-navy);
+    color: var(--dark-blue);
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1084,7 +1084,7 @@ body {
 .contact-item-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #1a365d, var(--exquisite-green));
+    background: linear-gradient(135deg, #1a365d, var(--primary-blue));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1114,7 +1114,7 @@ body {
 
 .contact-value {
     font-size: 16px;
-    color: var(--luxury-navy);
+    color: var(--dark-blue);
     font-weight: 500;
 }
 
@@ -1143,7 +1143,7 @@ body {
 }
 
 .social-glass-link:hover {
-    background: linear-gradient(135deg, var(--exquisite-green), #60a5fa);
+    background: linear-gradient(135deg, var(--primary-blue), #60a5fa);
     border-color: transparent;
     color: var(--pure-white);
     transform: translateY(-5px) scale(1.1);
@@ -1199,7 +1199,7 @@ body {
 .form-icon {
     width: 90px;
     height: 90px;
-    background: linear-gradient(135deg, #60a5fa, var(--exquisite-green));
+    background: linear-gradient(135deg, #60a5fa, var(--primary-blue));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1216,7 +1216,7 @@ body {
 
 .contact-form-glass:hover .form-icon {
     transform: scale(1.1) rotate(-5deg);
-    background: linear-gradient(135deg, var(--exquisite-green), #60a5fa);
+    background: linear-gradient(135deg, var(--primary-blue), #60a5fa);
     box-shadow: 0 20px 40px rgba(167, 243, 208, 0.4);
 }
 
@@ -1224,7 +1224,7 @@ body {
     font-family: var(--font-serif);
     font-size: 24px;
     font-weight: 700;
-    color: var(--luxury-navy);
+    color: var(--dark-blue);
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1252,7 +1252,7 @@ body {
 .input-icon {
     position: absolute;
     left: 20px;
-    color: var(--exquisite-green);
+    color: var(--primary-blue);
     font-size: 18px;
     z-index: 3;
     transition: all 0.3s ease;
@@ -1266,7 +1266,7 @@ body {
     background: rgba(255, 255, 255, 0.5);
     border: 2px solid rgba(26, 54, 93, 0.1);
     border-radius: 16px;
-    color: var(--luxury-navy);
+    color: var(--dark-blue);
     font-family: var(--font-sans);
     font-size: 16px;
     transition: all 0.4s ease;
@@ -1304,7 +1304,7 @@ body {
 
 .form-group-glass select option {
     background: var(--pure-white);
-    color: var(--luxury-navy);
+    color: var(--dark-blue);
     padding: 10px;
 }
 
@@ -1317,7 +1317,7 @@ body {
 .glass-submit-button {
     width: 100%;
     padding: 22px 40px;
-    background: linear-gradient(135deg, var(--exquisite-green), #60a5fa);
+    background: linear-gradient(135deg, var(--primary-blue), #60a5fa);
     border: none;
     border-radius: 50px;
     color: var(--pure-white);
@@ -1353,7 +1353,7 @@ body {
 }
 
 .glass-submit-button:hover {
-    background: linear-gradient(135deg, #60a5fa, var(--exquisite-green));
+    background: linear-gradient(135deg, #60a5fa, var(--primary-blue));
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 25px 50px rgba(96, 165, 250, 0.4);
 }
@@ -1410,7 +1410,7 @@ body {
 }
 
 .footer-nav a:hover {
-    color: var(--exquisite-green);
+    color: var(--primary-blue);
 }
 
 .footer-social {

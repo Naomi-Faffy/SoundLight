@@ -6,29 +6,29 @@
 }
 
 :root {
-    /* Sound Light Brand Color Palette */
-    --primary-blue: #1E90FF;
+    /* Sound Light Brand Color Palette - Updated to match logo */
+    --primary-blue: #0066FF;
     --dark-blue: #0047AB;
     --cool-white: #FFFFFF;
     --metallic-gray: #C5CDD7;
     --sleek-black: #000000;
-    
+
     /* Legacy color mappings for consistency */
     --jet-black: #000000;
     --pearl-white: #F8F8F8;
     --pure-white: #FFFFFF;
     --carbon-gray: #2C3E50;
-    
+
     /* Additional Shades */
-    --soft-blue: rgba(30, 144, 255, 0.1);
+    --soft-blue: rgba(0, 102, 255, 0.1);
     --soft-navy: rgba(0, 71, 171, 0.1);
     --deep-black: rgba(0, 0, 0, 0.95);
     --light-gray: rgba(197, 205, 215, 0.3);
-    
+
     /* Typography */
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Montserrat', sans-serif;
-    
+
     /* Spacing */
     --section-padding: 120px 0;
     --container-max-width: 1400px;

@@ -1,4 +1,4 @@
-// Exquisite Cars - Interactive Features
+// Sound Light - Interactive Features
 document.addEventListener('DOMContentLoaded', function() {
     
 
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Car Collection Hover Effects
+    // Event Cards Hover Effects
     const carCards = document.querySelectorAll('.car-card');
     carCards.forEach(card => {
         const overlay = card.querySelector('.car-overlay');
@@ -110,17 +110,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // View Details Button Click
         if (button) {
             button.addEventListener('click', function() {
-                const carModel = card.querySelector('.car-model').textContent;
-                showCarDetails(carModel);
+                const eventName = card.querySelector('.car-model').textContent;
+                showEventDetails(eventName);
             });
         }
         
-        // Schedule Test Drive Button
-        const testDriveBtn = card.querySelector('.car-action');
-        if (testDriveBtn) {
-            testDriveBtn.addEventListener('click', function() {
-                const carModel = card.querySelector('.car-model').textContent;
-                scheduleTestDrive(carModel);
+        // Book Event Button
+        const bookEventBtn = card.querySelector('.car-action');
+        if (bookEventBtn) {
+            bookEventBtn.addEventListener('click', function() {
+                const eventName = card.querySelector('.car-model').textContent;
+                bookEvent(eventName);
             });
         }
     });
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Success and Error Messages
     function showSuccessMessage() {
-        const message = createMessage('Thank you for your inquiry! Our luxury concierge will contact you within 24 hours.', 'success');
+        const message = createMessage('Thank you for your event request! Our team will contact you within 24 hours to discuss your elegant event experience.', 'success');
         showMessage(message);
     }
     
@@ -249,14 +249,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 4000);
     }
     
-    // Car Details Modal (placeholder function)
-    function showCarDetails(carModel) {
-        alert(`Detailed information about ${carModel} would be displayed in a luxury modal. This is a demonstration.`);
+    // Event Details Modal (placeholder function)
+    function showEventDetails(eventName) {
+        alert(`Detailed information about ${eventName} would be displayed in an elegant modal. This is a demonstration.`);
     }
     
-    // Schedule Test Drive (placeholder function)
-    function scheduleTestDrive(carModel) {
-        alert(`Scheduling a private test drive for ${carModel}. In a real implementation, this would open a booking system.`);
+    // Book Event (placeholder function)
+    function bookEvent(eventName) {
+        alert(`Booking ${eventName}. In a real implementation, this would open our event booking system.`);
     }
     
     // Preloader
@@ -449,7 +449,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 100);
     
-    console.log('Exquisite Cars - Luxury experience initialized');
+    console.log('Sound Light - Elegant event experience initialized');
 });
 
 // Additional Mobile Navigation Styles

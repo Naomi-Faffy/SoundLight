@@ -380,12 +380,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const glassInputs = document.querySelectorAll('.form-group-glass input, .form-group-glass select, .form-group-glass textarea');
     glassInputs.forEach(input => {
         input.addEventListener('focus', function() {
-            this.parentElement.querySelector('.input-icon').style.color = '#60a5fa';
+            this.parentElement.querySelector('.input-icon').style.color = '#1E90FF';
             this.parentElement.querySelector('.input-icon').style.transform = 'scale(1.1)';
         });
         
         input.addEventListener('blur', function() {
-            this.parentElement.querySelector('.input-icon').style.color = '#2eaa5f';
+            this.parentElement.querySelector('.input-icon').style.color = '#0047AB';
             this.parentElement.querySelector('.input-icon').style.transform = 'scale(1)';
         });
     });
@@ -432,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const focusableElements = document.querySelectorAll('a, button, input, select, textarea');
     focusableElements.forEach(el => {
         el.addEventListener('focus', function() {
-            this.style.outline = '2px solid #30A848';
+            this.style.outline = '2px solid #1E90FF';
             this.style.outlineOffset = '2px';
         });
         

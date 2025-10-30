@@ -6,9 +6,9 @@
 }
 
 :root {
-    /* Exquisite Brand Color Palette */
-    --exquisite-green: #30A848;
-    --luxury-navy: #1C355E;
+    /* Sound Light Brand Color Palette */
+    --primary-blue: #1E90FF;
+    --dark-blue: #0047AB;
     --cool-white: #FFFFFF;
     --metallic-gray: #C5CDD7;
     --sleek-black: #000000;
@@ -17,11 +17,11 @@
     --jet-black: #000000;
     --pearl-white: #F8F8F8;
     --pure-white: #FFFFFF;
-    --carbon-gray: #1C355E;
+    --carbon-gray: #2C3E50;
     
     /* Additional Shades */
-    --soft-green: rgba(48, 168, 72, 0.1);
-    --soft-navy: rgba(28, 53, 94, 0.1);
+    --soft-blue: rgba(30, 144, 255, 0.1);
+    --soft-navy: rgba(0, 71, 171, 0.1);
     --deep-black: rgba(0, 0, 0, 0.95);
     --light-gray: rgba(197, 205, 215, 0.3);
     
@@ -42,7 +42,7 @@ html {
 body {
     font-family: var(--font-sans);
     line-height: 1.6;
-    color: var(--luxury-navy);
+    color: var(--carbon-gray);
     background-color: var(--pearl-white);
     overflow-x: hidden;
     transition: all 0.3s ease;
@@ -143,7 +143,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--exquisite-green);
+    background: var(--primary-blue);
     transition: width 0.3s ease;
 }
 
@@ -152,7 +152,7 @@ body {
 }
 
 .nav-menu a:hover {
-    color: var(--exquisite-green);
+    color: var(--primary-blue);
 }
 
 .hamburger {
@@ -228,7 +228,7 @@ body {
 
 .hero-line-2 {
     display: block;
-    color: var(--exquisite-green);
+    color: var(--primary-blue);
     opacity: 0;
     animation: fadeInUp 1s ease 1s forwards;
 }
@@ -268,16 +268,16 @@ body {
 }
 
 .cta-button.primary {
-    background: var(--exquisite-green);
+    background: var(--primary-blue);
     color: var(--cool-white);
-    border-color: var(--exquisite-green);
+    border-color: var(--primary-blue);
 }
 
 .cta-button.primary:hover {
     background: transparent;
-    color: var(--exquisite-green);
+    color: var(--primary-blue);
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(48, 168, 72, 0.3);
+    box-shadow: 0 10px 30px rgba(30, 144, 255, 0.3);
 }
 
 .cta-button.secondary {
@@ -305,7 +305,7 @@ body {
 .scroll-arrow {
     width: 2px;
     height: 40px;
-    background: var(--exquisite-green);
+    background: var(--primary-blue);
     margin: 0 auto;
     position: relative;
 }
@@ -317,8 +317,8 @@ body {
     left: -4px;
     width: 10px;
     height: 10px;
-    border-right: 2px solid var(--exquisite-green);
-    border-bottom: 2px solid var(--exquisite-green);
+    border-right: 2px solid var(--primary-blue);
+    border-bottom: 2px solid var(--primary-blue);
     transform: rotate(45deg);
     animation: bounce 2s infinite;
 }
@@ -333,7 +333,7 @@ body {
     font-family: var(--font-serif);
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    color: var(--luxury-navy);
+    color: var(--dark-blue);
     margin-bottom: 20px;
     position: relative;
 }
@@ -346,7 +346,7 @@ body {
     transform: translateX(-50%);
     width: 80px;
     height: 2px;
-    background: var(--exquisite-green);
+    background: var(--primary-blue);
 }
 
 .section-subtitle {
@@ -422,7 +422,7 @@ body {
 }
 
 .view-details {
-    background: var(--exquisite-green);
+    background: var(--primary-blue);
     color: var(--cool-white);
     border: none;
     padding: 15px 30px;
@@ -435,7 +435,7 @@ body {
 }
 
 .view-details:hover {
-    background: var(--luxury-navy);
+    background: var(--dark-blue);
     transform: scale(1.05);
 }
 
@@ -448,7 +448,7 @@ body {
     font-family: var(--font-serif);
     font-size: 28px;
     font-weight: 600;
-    color: var(--luxury-navy);
+    color: var(--dark-blue);
     margin-bottom: 8px;
 }
 
@@ -463,14 +463,14 @@ body {
 .car-price {
     font-size: 20px;
     font-weight: 700;
-    color: var(--exquisite-green);
+    color: var(--primary-blue);
     margin-bottom: 25px;
 }
 
 .car-action {
     background: transparent;
-    color: var(--luxury-navy);
-    border: 2px solid var(--luxury-navy);
+    color: var(--dark-blue);
+    border: 2px solid var(--dark-blue);
     padding: 12px 25px;
     font-weight: 500;
     font-size: 12px;
@@ -482,7 +482,7 @@ body {
 }
 
 .car-action:hover {
-    background: var(--luxury-navy);
+    background: var(--dark-blue);
     color: var(--cool-white);
 }
 
@@ -1432,8 +1432,8 @@ body {
 }
 
 .footer-social a:hover {
-    background: var(--exquisite-green);
-    border-color: var(--exquisite-green);
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
     color: var(--cool-white);
 }
 

@@ -4,13 +4,20 @@
   const prevBtn = document.getElementById('prev');
   const nextBtn = document.getElementById('next');
   
-  // Create cards from local launch images (launch1.jpg .. launch17.jpg)
-  const images = [];
-  for (let i = 1; i <= 17; i++) {
-    images.push({ src: `launch${i}.jpg`, caption: `Launch ${i}`, alt: `Launch image ${i}` });
-  }
+  // Image data with captions
+  const images = [
+    { src: 'launch1.jpg', caption: 'Corporate Event Lighting Setup', alt: 'Elegant corporate event lighting display' },
+    { src: 'launch2.jpg', caption: 'Wedding Reception Sound System', alt: 'Premium sound system at an elegant wedding' },
+    { src: 'launch3.jpg', caption: 'Festival Stage Production', alt: 'Large-scale festival stage with lighting effects' },
+    { src: 'launch4.jpg', caption: 'Concert Lighting Design', alt: 'Dynamic concert lighting arrangement' },
+    { src: 'launch5.jpg', caption: 'Private Party Setup', alt: 'Intimate private party lighting and sound' },
+    { src: 'launch6.jpg', caption: 'Gala Event Production', alt: 'Sophisticated gala event production setup' },
+    { src: 'launch7.jpg', caption: 'Outdoor Event Lighting', alt: 'Stunning outdoor event lighting design' },
+    { src: 'launch8.jpg', caption: 'Club Sound Installation', alt: 'Professional club sound system setup' },
+    { src: 'launch9.jpg', caption: 'Special Effects Display', alt: 'Impressive special effects and lighting show' }
+  ];
 
-  // Create card elements and append to carousel
+  // Create cards
   images.forEach((image, index) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -18,16 +25,16 @@
     card.setAttribute('data-caption', image.caption);
     card.setAttribute('role', 'img');
     card.setAttribute('aria-label', image.alt);
-
+    
     const img = document.createElement('img');
     img.src = image.src;
     img.alt = image.alt;
     img.loading = 'lazy';
-
+    
     const caption = document.createElement('div');
     caption.className = 'caption';
     caption.innerHTML = `<h3>${image.caption}</h3>`;
-
+    
     card.appendChild(img);
     card.appendChild(caption);
     carousel.appendChild(card);

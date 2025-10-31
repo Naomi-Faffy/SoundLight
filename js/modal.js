@@ -30,18 +30,15 @@
     const modalOverlay = modalContainer.querySelector('.modal-overlay');
 
     let currentModalIndex = 0;
-    let cards = [];
+    let cards = Array.from(carousel.querySelectorAll('.card'));
 
     // Update modal content
     function updateModalContent(index) {
-        // refresh cards list in case DOM changed
-        cards = Array.from(carousel.querySelectorAll('.card'));
         const card = cards[index];
-        if (!card) return;
         const img = card.querySelector('img');
         modalImage.src = img.src;
         modalImage.alt = img.alt;
-        modalCaption.textContent = card.dataset.caption || '';
+        modalCaption.textContent = card.dataset.caption;
         currentModalIndex = index;
     }
 
@@ -71,10 +68,9 @@
     carousel.addEventListener('click', (e) => {
         const card = e.target.closest('.card');
         if (!card) return;
-
+        
         const index = Array.from(carousel.children).indexOf(card);
-        // ensure cards array is current and open modal
-        cards = Array.from(carousel.querySelectorAll('.card'));
+        cards.push(card);
         openModal(index);
     });
 

@@ -107,7 +107,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 110px; /* increased to accommodate larger brand text while keeping perfect fit */
 }
 
 .nav-logo {
@@ -115,10 +115,22 @@ body {
     align-items: center;
 }
 
-.nav-logo img {
-    height: 70px;
-    width: auto;
-    filter: none;
+/* Hide raster logo where present and prioritize text-based brand */
+.nav-logo img { display: none; }
+
+/* Brand text replaces the logo image to guarantee transparent background and crisp typography */
+.brand-text {
+    font-family: var(--font-serif);
+    font-size: 48px; /* enlarged to be clearly visible (approx. 3x visual scale compared to icon) */
+    font-weight: 700;
+    color: var(--pure-white);
+    text-decoration: none;
+    letter-spacing: 0.4px;
+    display: inline-block;
+    line-height: 1;
+    padding: 6px 8px;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
 
 .nav-menu {

@@ -107,7 +107,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 120px; /* increased to fit larger brand text while keeping vertical centering */
+    height: 80px;
 }
 
 .nav-logo {
@@ -115,33 +115,10 @@ body {
     align-items: center;
 }
 
-/* Hide the raster logo (if present) and use text brand instead to guarantee no white background */
-.nav-logo img { display: none !important; }
-
-/* Brand text — keep wording and colors exact, enlarge to ~2x while ensuring it fits */
-.brand-text {
-    font-family: var(--font-serif);
-    font-size: 72px; /* large, visually ~2x the prior raster height */
-    font-weight: 700;
-    color: var(--pearl-white); /* preserve the site's header text color */
-    text-decoration: none;
-    line-height: 1;
-    display: inline-block;
-    padding: 4px 6px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-shadow: 0 6px 18px rgba(0,0,0,0.35);
-}
-
-/* Ensure the brand scales down on narrow viewports so it always fits the nav */
-@media (max-width: 900px) {
-    .nav-container { height: 96px; }
-    .brand-text { font-size: 46px; }
-}
-
-@media (max-width: 480px) {
-    .nav-container { height: 72px; }
-    .brand-text { font-size: 28px; }
+.nav-logo img {
+    height: 70px;
+    width: auto;
+    filter: none;
 }
 
 .nav-menu {

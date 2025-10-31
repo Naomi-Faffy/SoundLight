@@ -479,6 +479,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Touch/swipe support
             this.setupTouchEvents();
+            // Keyboard arrow navigation
+            this.setupKeyboard();
 
             // Initial setup
             this.updateCarousel();
@@ -536,17 +538,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         nextSlide() {
-            if (this.currentIndex < this.totalSlides - 1) {
-                this.currentIndex++;
-                this.updateCarousel();
-            }
+            // Circular next
+            this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+            this.updateCarousel();
         }
 
         prevSlide() {
-            if (this.currentIndex > 0) {
-                this.currentIndex--;
-                this.updateCarousel();
-            }
+            // Circular previous
+            this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+            this.updateCarousel();
         }
 
         setupTouchEvents() {
@@ -560,6 +560,17 @@ document.addEventListener('DOMContentLoaded', function() {
             this.carousel.addEventListener('touchend', (e) => {
                 endX = e.changedTouches[0].clientX;
                 this.handleSwipe(startX, endX);
+            });
+        }
+
+        // Add keyboard support for left/right arrow navigation
+        setupKeyboard() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    this.nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    this.prevSlide();
+                }
             });
         }
 

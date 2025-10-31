@@ -114,7 +114,7 @@ body {
 }
 
 .nav-logo img {
-    height: 50px;
+    height: 100px;
     width: auto;
     filter: none;
 }
@@ -360,7 +360,7 @@ body {
 /* Collection Section */
 .collection {
     padding: var(--section-padding);
-    background: var(--pure-white);
+    background: var(--sleek-black);
     border: 5px solid var(--jet-black);
     border-radius: 8px;
     margin: 20px auto;

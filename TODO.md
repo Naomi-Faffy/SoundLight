@@ -1,7 +1,5 @@
-# Task: Update Website Elements
+# TODO List for Website Updates
 
-## Completed Tasks
-- [x] Verify hero video is set to "Herosound.mp4" (already correct in HTML)
-- [x] Verify events images are set to "launch1.jpg" to "launch9.jpg" (already correct in HTML)
-- [x] Update CSS color variables to match logo colors (Blue: #0066FF, Black: #000000, White: #FFFFFF)
-- [x] Test the website to ensure changes are applied correctly (opened in browser)
+- [x] Remove "Available on Request" text from all 9 car-price divs in index.html
+- [x] Enlarge logo height from 50px to 100px in styles.css (.nav-logo img)
+- [x] Change collection section background to black in styles.css (.collection)

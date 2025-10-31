@@ -461,6 +461,8 @@ document.addEventListener('DOMContentLoaded', function() {
             this.pills = document.querySelectorAll('.pill:not(.view-more)');
             this.currentIndex = 4; // Start with the 5th image (index 4) as center
             this.totalSlides = this.slides.length;
+            this.autoplayDelay = 3500; // ms
+            this.autoplayTimer = null;
 
             this.init();
         }
@@ -481,9 +483,12 @@ document.addEventListener('DOMContentLoaded', function() {
             this.setupTouchEvents();
             // Keyboard arrow navigation
             this.setupKeyboard();
+            // Hover pause (desktop)
+            this.setupHoverPause();
 
             // Initial setup
             this.updateCarousel();
+            this.startAutoplay();
         }
 
         updateCarousel() {
@@ -530,6 +535,17 @@ document.addEventListener('DOMContentLoaded', function() {
             this.pills.forEach((pill, index) => {
                 pill.classList.toggle('active', index === this.currentIndex);
             });
+
+            // Update ARIA announcer with the centered slide's caption or alt text
+            const announcer = document.getElementById('carousel-announcer');
+            if (announcer) {
+                const centerSlide = this.slides[this.currentIndex];
+                if (centerSlide) {
+                    const caption = centerSlide.querySelector('.caption h3');
+                    const alt = centerSlide.querySelector('img')?.getAttribute('alt') || '';
+                    announcer.textContent = caption ? `${caption.textContent}` : `Image ${this.currentIndex + 1}: ${alt}`;
+                }
+            }
         }
 
         goToSlide(index) {
@@ -555,12 +571,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
             this.carousel.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
+                this.stopAutoplay();
             });
 
             this.carousel.addEventListener('touchend', (e) => {
                 endX = e.changedTouches[0].clientX;
                 this.handleSwipe(startX, endX);
+                // resume autoplay after short delay
+                setTimeout(() => this.startAutoplay(), 1200);
             });
+        }
+
+        startAutoplay() {
+            if (this.autoplayTimer) return;
+            this.autoplayTimer = setInterval(() => {
+                this.nextSlide();
+            }, this.autoplayDelay);
+        }
+
+        stopAutoplay() {
+            if (this.autoplayTimer) {
+                clearInterval(this.autoplayTimer);
+                this.autoplayTimer = null;
+            }
         }
 
         // Add keyboard support for left/right arrow navigation
@@ -572,6 +605,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.prevSlide();
                 }
             });
+        }
+
+        // Pause autoplay while hovering (desktop) and resume on leave
+        setupHoverPause() {
+            this.carousel.addEventListener('mouseenter', () => this.stopAutoplay());
+            this.carousel.addEventListener('mouseleave', () => this.startAutoplay());
         }
 
         handleSwipe(startX, endX) {

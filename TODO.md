@@ -1,5 +1,6 @@
-# TODO List for Logo and Styling Updates
+# TODO List for Favicon and Styling Updates
 
-- [x] Adjust logo height from 100px to 70px to fit in nav bar
-- [x] Change hero video from "video.mp4" to "magic.mp4"
-- [x] Update text colors to incorporate more black on white backgrounds
+- [x] Add favicon link using "sound.png"
+- [x] Change all white text in hero section to black
+- [x] Fix overlap between services and trust sections
+- [x] Make background hues after events section more blackish

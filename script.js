@@ -1,8 +1,110 @@
 // Sound Light - Interactive Features
 document.addEventListener('DOMContentLoaded', function() {
+    // Carousel with stacked cards
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
     
+    // Images array
+    const images = [
+        'launch1.jpg',
+        'launch2.jpg',
+        'launch3.jpg',
+        'launch4.jpg',
+        'launch5.jpg',
+        'launch6.jpg',
+        'launch7.jpg',
+        'launch8.jpg',
+        'launch9.jpg'
+    ];
 
-    
+    const titles = [
+        'Elegant Lighting Design',
+        'Sound Engineering',
+        'Stage Production',
+        'Corporate Events',
+        'Wedding Productions',
+        'Concert Lighting',
+        'Special Effects',
+        'DJ Services',
+        'Event Production'
+    ];
+
+    // Create cards
+    images.forEach((src, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.setAttribute('data-index', index);
+        card.setAttribute('data-title', titles[index]);
+        
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = titles[index];
+        img.loading = 'lazy';
+        
+        card.appendChild(img);
+        carousel.appendChild(card);
+    });
+
+    let activeIndex = 0;
+    const totalCards = images.length;
+
+    function updateCards() {
+        const cards = [...carousel.children];
+        
+        cards.forEach((card, index) => {
+            const position = (index - activeIndex + totalCards) % totalCards;
+            
+            let status;
+            if (position === 0) status = 'active';
+            else if (position === 1) status = 'after';
+            else if (position === totalCards - 1) status = 'before';
+            else if (position < totalCards - 1) status = 'ahead';
+            else status = 'behind';
+            
+            card.dataset.status = status;
+        });
+    }
+
+    function moveNext() {
+        activeIndex = (activeIndex + 1) % totalCards;
+        updateCards();
+    }
+
+    function movePrev() {
+        activeIndex = (activeIndex - 1 + totalCards) % totalCards;
+        updateCards();
+    }
+
+    // Event listeners
+    nextBtn?.addEventListener('click', moveNext);
+    prevBtn?.addEventListener('click', movePrev);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') movePrev();
+        if (e.key === 'ArrowRight') moveNext();
+    });
+
+    // Touch events
+    let touchStartX = 0;
+    carousel?.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    });
+
+    carousel?.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > 50) { // minimum swipe distance
+            if (diff > 0) moveNext();
+            else movePrev();
+        }
+    });
+
+    // Initial setup
+    updateCards();
+
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');

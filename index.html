@@ -99,102 +99,11 @@
                 <button class="pill view-more">View More →</button>
             </div>
 
-            <div class="carousel-container">
-                    <div class="carousel">
-                        <!-- 9 image slides (placeholders: image1.jpg ... image9.jpg) -->
-                        <div class="carousel-slide" data-slide="0">
-                            <div class="gallery-card">
-                                <img src="launch1.jpg" alt="Launch Event 1" loading="lazy">
-                                <div class="caption">
-                                    <h3>Elegant Lighting Design</h3>
-                                    <p>Professional event lighting setups</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" data-slide="1">
-                            <div class="gallery-card">
-                                <img src="launch2.jpg" alt="Launch Event 2" loading="lazy">
-                                <div class="caption">
-                                    <h3>Sound Engineering</h3>
-                                    <p>Crystal-clear audio experiences</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" data-slide="2">
-                            <div class="gallery-card">
-                                <img src="launch3.jpg" alt="Launch Event 3" loading="lazy">
-                                <div class="caption">
-                                    <h3>Stage Production</h3>
-                                    <p>Complete stage setup solutions</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" data-slide="3">
-                            <div class="gallery-card">
-                                <img src="launch4.jpg" alt="Launch Event 4" loading="lazy">
-                                <div class="caption">
-                                    <h3>Corporate Events</h3>
-                                    <p>Professional business atmospheres</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" data-slide="4">
-                            <div class="gallery-card">
-                                <img src="launch5.jpg" alt="Launch Event 5" loading="lazy">
-                                <div class="caption">
-                                    <h3>Wedding Productions</h3>
-                                    <p>Magical moments in perfect light</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" data-slide="5">
-                            <div class="gallery-card">
-                                <img src="launch6.jpg" alt="Launch Event 6" loading="lazy">
-                                <div class="caption">
-                                    <h3>Concert Lighting</h3>
-                                    <p>Dynamic performance lighting</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" data-slide="6">
-                            <div class="gallery-card">
-                                <img src="launch7.jpg" alt="Launch Event 7" loading="lazy">
-                                <div class="caption">
-                                    <h3>Special Effects</h3>
-                                    <p>Creating magical atmospheres</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" data-slide="7">
-                            <div class="gallery-card">
-                                <img src="launch8.jpg" alt="Launch Event 8" loading="lazy">
-                                <div class="caption">
-                                    <h3>DJ Services</h3>
-                                    <p>Professional sound & mixing</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" data-slide="8">
-                            <div class="gallery-card">
-                                <img src="launch9.jpg" alt="Launch Event 9" loading="lazy">
-                                <div class="caption">
-                                    <h3>Event Production</h3>
-                                    <p>Full-service event solutions</p>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                    <!-- ARIA announcer for accessibility (screen readers) -->
-                    <div id="carousel-announcer" aria-live="polite" class="sr-only"></div>
-
-                <div class="carousel-nav">
-                    <button class="nav-arrow prev" aria-label="Previous image">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="nav-arrow next" aria-label="Next image">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+            <div class="carousel-root">
+                <div id="carousel" class="carousel" aria-roledescription="carousel"></div>
+                <div class="controls">
+                    <button id="prev" class="nav" aria-label="Previous">◀</button>
+                    <button id="next" class="nav" aria-label="Next">▶</button>
                 </div>
             </div>
         </div>

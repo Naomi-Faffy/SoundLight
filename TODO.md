@@ -1,8 +1,8 @@
-# TODO List for Events Section 3D Layered Stack Carousel
+# TODO List for Events Section Horizontal Scroll Carousel
 
 - [x] Restructure collection section HTML with header, filter pills, and carousel container
-- [x] Update CSS for proper 3D layered stack effect with enhanced perspective, z-index hierarchy, and depth scaling
-- [x] Add JavaScript carousel functionality with layered positioning classes for 7-layer depth
-- [x] Implement auto-play with pause on hover and reset on interaction
-- [x] Add touch/swipe and keyboard navigation support
+- [x] Update CSS for horizontal scroll carousel with smooth scrolling and hover effects
+- [x] Add JavaScript carousel functionality for horizontal scrolling and pill navigation
+- [x] Implement click-to-center functionality for slides
+- [x] Add scroll-based active state detection
 - [x] Change hero video to video.mp4

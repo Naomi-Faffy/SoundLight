@@ -451,13 +451,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Sound Light - Elegant event experience initialized');
 
-    // Gallery Carousel Functionality
+    // Gallery Carousel Functionality - Horizontal Scroll
     class GalleryCarousel {
         constructor() {
-            this.carousel = document.querySelector('.carousel');
+            this.carouselContainer = document.querySelector('.carousel-container');
             this.slides = document.querySelectorAll('.carousel-slide');
-            this.prevBtn = document.querySelector('.nav-arrow.prev');
-            this.nextBtn = document.querySelector('.nav-arrow.next');
             this.pills = document.querySelectorAll('.pill:not(.view-more)');
             this.currentIndex = 0;
             this.totalSlides = this.slides.length;
@@ -466,164 +464,74 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         init() {
-            if (!this.carousel || !this.slides.length) return;
-
-            // Set up event listeners
-            this.prevBtn?.addEventListener('click', () => this.prevSlide());
-            this.nextBtn?.addEventListener('click', () => this.nextSlide());
+            if (!this.carouselContainer || !this.slides.length) return;
 
             // Pill filter functionality
             this.pills.forEach((pill, index) => {
-                pill.addEventListener('click', () => this.goToSlide(index));
+                pill.addEventListener('click', () => this.scrollToSlide(index));
             });
 
-            // Touch/swipe support
-            this.setupTouchEvents();
+            // Click on slides to center them
+            this.slides.forEach((slide, index) => {
+                slide.addEventListener('click', () => this.scrollToSlide(index));
+            });
 
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => this.handleKeyPress(e));
-
-            // Pause auto-play on hover
-            this.carousel.addEventListener('mouseenter', () => this.pauseAutoPlay());
-            this.carousel.addEventListener('mouseleave', () => this.resumeAutoPlay());
-
-            // Auto-play (optional)
-            this.startAutoPlay();
+            // Update active state on scroll
+            this.carouselContainer.addEventListener('scroll', () => this.updateActiveSlide());
 
             // Initial setup
-            this.updateCarousel();
+            this.updateActiveSlide();
         }
 
-        updateCarousel() {
-            // Remove all positioning classes
-            this.slides.forEach(slide => {
-                slide.className = 'carousel-slide';
+        scrollToSlide(index) {
+            const slide = this.slides[index];
+            if (!slide) return;
+
+            const container = this.carouselContainer;
+            const slideLeft = slide.offsetLeft - container.offsetLeft;
+            const containerWidth = container.clientWidth;
+            const slideWidth = slide.clientWidth;
+
+            const scrollLeft = slideLeft - (containerWidth / 2) + (slideWidth / 2);
+
+            container.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth'
             });
 
-            // Apply positioning classes based on current index
-            const totalSlides = this.totalSlides;
-            this.slides.forEach((slide, index) => {
-                const relativeIndex = (index - this.currentIndex + totalSlides) % totalSlides;
+            this.currentIndex = index;
+            this.updateActivePill();
+        }
 
-                if (relativeIndex === 0) {
-                    slide.classList.add('active');
-                } else if (relativeIndex === 1) {
-                    slide.classList.add('right');
-                } else if (relativeIndex === totalSlides - 1) {
-                    slide.classList.add('left');
-                } else if (relativeIndex === 2) {
-                    slide.classList.add('far-right');
-                } else if (relativeIndex === totalSlides - 2) {
-                    slide.classList.add('far-left');
-                } else if (relativeIndex === 3) {
-                    slide.classList.add('hidden-right');
-                } else if (relativeIndex === totalSlides - 3) {
-                    slide.classList.add('hidden-left');
-                } else if (relativeIndex === 4) {
-                    slide.classList.add('hidden-far-right');
-                } else if (relativeIndex === totalSlides - 4) {
-                    slide.classList.add('hidden-far-left');
+        updateActiveSlide() {
+            const container = this.carouselContainer;
+            const containerCenter = container.scrollLeft + (container.clientWidth / 2);
+
+            let closestIndex = 0;
+            let closestDistance = Infinity;
+
+            this.slides.forEach((slide, index) => {
+                const slideCenter = slide.offsetLeft - container.offsetLeft + (slide.clientWidth / 2);
+                const distance = Math.abs(containerCenter - slideCenter);
+
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = index;
                 }
             });
 
-            // Update active pill
+            // Update active classes
+            this.slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === closestIndex);
+            });
+
+            this.currentIndex = closestIndex;
+            this.updateActivePill();
+        }
+
+        updateActivePill() {
             this.pills.forEach((pill, index) => {
                 pill.classList.toggle('active', index === this.currentIndex);
-            });
-
-            // Update accessibility
-            this.updateAriaLabels();
-        }
-
-        goToSlide(index) {
-            this.currentIndex = Math.max(0, Math.min(index, this.totalSlides - 1));
-            this.updateCarousel();
-            this.resetAutoPlay();
-        }
-
-        nextSlide() {
-            this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
-            this.updateCarousel();
-            this.resetAutoPlay();
-        }
-
-        prevSlide() {
-            this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
-            this.updateCarousel();
-            this.resetAutoPlay();
-        }
-
-        setupTouchEvents() {
-            let startX = 0;
-            let endX = 0;
-
-            this.carousel.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            });
-
-            this.carousel.addEventListener('touchend', (e) => {
-                endX = e.changedTouches[0].clientX;
-                this.handleSwipe(startX, endX);
-            });
-        }
-
-        handleSwipe(startX, endX) {
-            const diff = startX - endX;
-            const threshold = 50;
-
-            if (Math.abs(diff) > threshold) {
-                if (diff > 0) {
-                    this.nextSlide();
-                } else {
-                    this.prevSlide();
-                }
-            }
-        }
-
-        handleKeyPress(e) {
-            if (e.key === 'ArrowLeft') {
-                this.prevSlide();
-            } else if (e.key === 'ArrowRight') {
-                this.nextSlide();
-            }
-        }
-
-        handleKeyPress(e) {
-            if (e.key === 'ArrowLeft') {
-                this.prevSlide();
-            } else if (e.key === 'ArrowRight') {
-                this.nextSlide();
-            }
-        }
-
-        startAutoPlay() {
-            this.autoPlayInterval = setInterval(() => {
-                this.nextSlide();
-            }, 5000); // Change slide every 5 seconds
-        }
-
-        resetAutoPlay() {
-            clearInterval(this.autoPlayInterval);
-            this.startAutoPlay();
-        }
-
-        pauseAutoPlay() {
-            clearInterval(this.autoPlayInterval);
-        }
-
-        resumeAutoPlay() {
-            this.startAutoPlay();
-        }
-
-        updateAriaLabels() {
-            this.slides.forEach((slide, index) => {
-                const isActive = index === this.currentIndex;
-                slide.setAttribute('aria-hidden', !isActive);
-
-                const card = slide.querySelector('.gallery-card');
-                if (card) {
-                    card.setAttribute('aria-current', isActive ? 'true' : 'false');
-                }
             });
         }
     }

@@ -466,43 +466,81 @@ body {
 .carousel-container {
     position: relative;
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.carousel-container::-webkit-scrollbar {
-    display: none;
+    height: 500px;
+    perspective: 1100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
-    gap: 20px;
-    padding: 20px;
-    min-width: max-content;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
 }
 
 .carousel-slide {
-    flex-shrink: 0;
-    width: 400px;
-    height: 350px;
-    transition: all 0.5s ease;
-    cursor: pointer;
-    border-radius: 20px;
+    position: absolute;
+    width: 350px;
+    height: 300px;
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: center center;
+    z-index: 1;
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-slide:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .carousel-slide.active {
-    transform: scale(1.1);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    transform: translateX(0) translateY(-10px) rotateY(0deg) scale(1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    opacity: 1;
+}
+
+.carousel-slide.left-4 {
+    transform: translateX(-600px) rotateY(-20deg) scale(0.7);
+    opacity: 0.4;
+}
+
+.carousel-slide.left-3 {
+    transform: translateX(-450px) rotateY(-15deg) scale(0.8);
+    opacity: 0.6;
+}
+
+.carousel-slide.left-2 {
+    transform: translateX(-300px) rotateY(-10deg) scale(0.88);
+    opacity: 0.75;
+}
+
+.carousel-slide.left-1 {
+    transform: translateX(-150px) rotateY(-5deg) scale(0.94);
+    opacity: 0.9;
+}
+
+.carousel-slide.right-1 {
+    transform: translateX(150px) rotateY(5deg) scale(0.94);
+    opacity: 0.9;
+}
+
+.carousel-slide.right-2 {
+    transform: translateX(300px) rotateY(10deg) scale(0.88);
+    opacity: 0.75;
+}
+
+.carousel-slide.right-3 {
+    transform: translateX(450px) rotateY(15deg) scale(0.8);
+    opacity: 0.6;
+}
+
+.carousel-slide.right-4 {
+    transform: translateX(600px) rotateY(20deg) scale(0.7);
+    opacity: 0.4;
 }
 
 .gallery-card {

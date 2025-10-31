@@ -451,88 +451,120 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Sound Light - Elegant event experience initialized');
 
-    // Gallery Carousel Functionality - Horizontal Scroll
+    // Gallery Carousel Functionality - 3D Stack
     class GalleryCarousel {
         constructor() {
-            this.carouselContainer = document.querySelector('.carousel-container');
+            this.carousel = document.querySelector('.carousel');
             this.slides = document.querySelectorAll('.carousel-slide');
+            this.prevBtn = document.querySelector('.nav-arrow.prev');
+            this.nextBtn = document.querySelector('.nav-arrow.next');
             this.pills = document.querySelectorAll('.pill:not(.view-more)');
-            this.currentIndex = 0;
+            this.currentIndex = 4; // Start with the 5th image (index 4) as center
             this.totalSlides = this.slides.length;
 
             this.init();
         }
 
         init() {
-            if (!this.carouselContainer || !this.slides.length) return;
+            if (!this.carousel || !this.slides.length) return;
+
+            // Set up event listeners
+            this.prevBtn?.addEventListener('click', () => this.prevSlide());
+            this.nextBtn?.addEventListener('click', () => this.nextSlide());
 
             // Pill filter functionality
             this.pills.forEach((pill, index) => {
-                pill.addEventListener('click', () => this.scrollToSlide(index));
+                pill.addEventListener('click', () => this.goToSlide(index));
             });
 
-            // Click on slides to center them
-            this.slides.forEach((slide, index) => {
-                slide.addEventListener('click', () => this.scrollToSlide(index));
-            });
-
-            // Update active state on scroll
-            this.carouselContainer.addEventListener('scroll', () => this.updateActiveSlide());
+            // Touch/swipe support
+            this.setupTouchEvents();
 
             // Initial setup
-            this.updateActiveSlide();
+            this.updateCarousel();
         }
 
-        scrollToSlide(index) {
-            const slide = this.slides[index];
-            if (!slide) return;
-
-            const container = this.carouselContainer;
-            const slideLeft = slide.offsetLeft - container.offsetLeft;
-            const containerWidth = container.clientWidth;
-            const slideWidth = slide.clientWidth;
-
-            const scrollLeft = slideLeft - (containerWidth / 2) + (slideWidth / 2);
-
-            container.scrollTo({
-                left: scrollLeft,
-                behavior: 'smooth'
+        updateCarousel() {
+            // Remove all positioning classes
+            this.slides.forEach(slide => {
+                slide.className = 'carousel-slide';
             });
 
-            this.currentIndex = index;
-            this.updateActivePill();
-        }
-
-        updateActiveSlide() {
-            const container = this.carouselContainer;
-            const containerCenter = container.scrollLeft + (container.clientWidth / 2);
-
-            let closestIndex = 0;
-            let closestDistance = Infinity;
-
+            // Apply positioning classes based on current index
             this.slides.forEach((slide, index) => {
-                const slideCenter = slide.offsetLeft - container.offsetLeft + (slide.clientWidth / 2);
-                const distance = Math.abs(containerCenter - slideCenter);
+                const relativeIndex = index - this.currentIndex;
 
-                if (distance < closestDistance) {
-                    closestDistance = distance;
-                    closestIndex = index;
+                if (relativeIndex === 0) {
+                    slide.classList.add('active');
+                } else if (relativeIndex === -4) {
+                    slide.classList.add('left-4');
+                } else if (relativeIndex === -3) {
+                    slide.classList.add('left-3');
+                } else if (relativeIndex === -2) {
+                    slide.classList.add('left-2');
+                } else if (relativeIndex === -1) {
+                    slide.classList.add('left-1');
+                } else if (relativeIndex === 1) {
+                    slide.classList.add('right-1');
+                } else if (relativeIndex === 2) {
+                    slide.classList.add('right-2');
+                } else if (relativeIndex === 3) {
+                    slide.classList.add('right-3');
+                } else if (relativeIndex === 4) {
+                    slide.classList.add('right-4');
                 }
             });
 
-            // Update active classes
-            this.slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === closestIndex);
-            });
-
-            this.currentIndex = closestIndex;
-            this.updateActivePill();
-        }
-
-        updateActivePill() {
+            // Update active pill
             this.pills.forEach((pill, index) => {
                 pill.classList.toggle('active', index === this.currentIndex);
             });
+        }
+
+        goToSlide(index) {
+            this.currentIndex = Math.max(0, Math.min(index, this.totalSlides - 1));
+            this.updateCarousel();
+        }
+
+        nextSlide() {
+            if (this.currentIndex < this.totalSlides - 1) {
+                this.currentIndex++;
+                this.updateCarousel();
+            }
+        }
+
+        prevSlide() {
+            if (this.currentIndex > 0) {
+                this.currentIndex--;
+                this.updateCarousel();
+            }
+        }
+
+        setupTouchEvents() {
+            let startX = 0;
+            let endX = 0;
+
+            this.carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            this.carousel.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                this.handleSwipe(startX, endX);
+            });
+        }
+
+        handleSwipe(startX, endX) {
+            const diff = startX - endX;
+            const threshold = 50;
+
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    this.nextSlide();
+                } else {
+                    this.prevSlide();
+                }
+            }
         }
     }
 

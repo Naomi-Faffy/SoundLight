@@ -1,8 +1,6 @@
-# TODO List for Events Section 3D Stack Carousel
+# Task: Update Logos
 
-- [x] Restructure collection section HTML with header, filter pills, and carousel container
-- [x] Update CSS for 3D stack effect with perspective, rotation, scaling, and opacity
-- [x] Add JavaScript carousel functionality for 3D stack navigation with arrow buttons
-- [x] Implement pill navigation to jump to specific slides
-- [x] Add touch/swipe support for mobile devices
-- [x] Change hero video to video.mp4
+## Steps
+- [x] Change footer logo in index.html from "sound.png" to "remove.png"
+- [x] Increase navigation logo height in styles.css from 210px to 630px (desktop)
+- [x] Increase navigation logo height in styles.css from 90px to 270px (mobile)

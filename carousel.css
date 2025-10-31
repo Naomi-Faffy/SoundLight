@@ -1,7 +1,7 @@
 #carousel {
   position: relative;
   width: 100%;
-  height: 720px; /* increased height to make images larger vertically */
+  height: 620px; /* slightly reduced from 720 to better match original spacing */
   perspective: 1000px;
   transform-style: preserve-3d;
   display: flex;
@@ -11,17 +11,17 @@
 
 .card {
   position: absolute;
-  /* responsive size but keep correct aspect ratio to avoid stretching */
-  width: 70%;
-  aspect-ratio: 4/3; /* ensures height grows proportionally */
+  /* make cards larger and overlap: wider width means taller height via aspect-ratio */
+  width: 75%;
+  aspect-ratio: 4/3;
   height: auto;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%); /* center by default */
+  transform: translate(-50%, -50%);
   border-radius: var(--card-radius);
   overflow: hidden;
-  transition: transform 0.8s cubic-bezier(0.71, 0.03, 0.56, 0.85), opacity 0.6s;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.7s cubic-bezier(0.22, 0.9, 0.33, 1), opacity 0.45s;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
   cursor: pointer;
 }
 
@@ -33,32 +33,32 @@
 }
 
 .card[data-status="active"] {
-  transform: translate(-50%, -50%) translateX(0) scale(1);
+  transform: translate(-50%, -50%) translateX(0) scale(1.02);
   opacity: 1;
-  z-index: 6;
+  z-index: 8;
 }
 
 .card[data-status="before"] {
-  transform: translate(-50%, -50%) translateX(-120%) scale(0.82);
-  opacity: 0.7;
-  z-index: 5;
+  transform: translate(-50%, -50%) translateX(-48%) scale(0.92);
+  opacity: 0.88;
+  z-index: 6;
 }
 
 .card[data-status="after"] {
-  transform: translate(-50%, -50%) translateX(120%) scale(0.82);
-  opacity: 0.7;
-  z-index: 5;
+  transform: translate(-50%, -50%) translateX(48%) scale(0.92);
+  opacity: 0.88;
+  z-index: 6;
 }
 
 .card[data-status="behind"] {
-  transform: translate(-50%, -50%) translateX(-240%) scale(0.6);
-  opacity: 0.35;
+  transform: translate(-50%, -50%) translateX(-96%) scale(0.72);
+  opacity: 0.48;
   z-index: 4;
 }
 
 .card[data-status="ahead"] {
-  transform: translate(-50%, -50%) translateX(240%) scale(0.6);
-  opacity: 0.35;
+  transform: translate(-50%, -50%) translateX(96%) scale(0.72);
+  opacity: 0.48;
   z-index: 4;
 }
 

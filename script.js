@@ -450,6 +450,131 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
     
     console.log('Sound Light - Elegant event experience initialized');
+
+    // Gallery Carousel Functionality
+    class GalleryCarousel {
+        constructor() {
+            this.carousel = document.querySelector('.carousel');
+            this.slides = document.querySelectorAll('.carousel-slide');
+            this.prevBtn = document.querySelector('.nav-arrow.prev');
+            this.nextBtn = document.querySelector('.nav-arrow.next');
+            this.pills = document.querySelectorAll('.pill:not(.view-more)');
+            this.currentIndex = 0;
+            this.totalSlides = this.slides.length;
+
+            this.init();
+        }
+
+        init() {
+            if (!this.carousel || !this.slides.length) return;
+
+            // Set up event listeners
+            this.prevBtn?.addEventListener('click', () => this.prevSlide());
+            this.nextBtn?.addEventListener('click', () => this.nextSlide());
+
+            // Pill filter functionality
+            this.pills.forEach((pill, index) => {
+                pill.addEventListener('click', () => this.goToSlide(index));
+            });
+
+            // Touch/swipe support
+            this.setupTouchEvents();
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+
+            // Auto-play (optional)
+            this.startAutoPlay();
+
+            // Initial setup
+            this.updateCarousel();
+        }
+
+        updateCarousel() {
+            // Update transform
+            const translateX = -this.currentIndex * 100;
+            this.carousel.style.transform = `translateX(${translateX}%)`;
+
+            // Update active pill
+            this.pills.forEach((pill, index) => {
+                pill.classList.toggle('active', index === this.currentIndex);
+            });
+
+            // Update accessibility
+            this.updateAriaLabels();
+        }
+
+        goToSlide(index) {
+            this.currentIndex = Math.max(0, Math.min(index, this.totalSlides - 1));
+            this.updateCarousel();
+        }
+
+        nextSlide() {
+            this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+            this.updateCarousel();
+        }
+
+        prevSlide() {
+            this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+            this.updateCarousel();
+        }
+
+        setupTouchEvents() {
+            let startX = 0;
+            let endX = 0;
+
+            this.carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            this.carousel.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                this.handleSwipe(startX, endX);
+            });
+        }
+
+        handleSwipe(startX, endX) {
+            const diff = startX - endX;
+            const threshold = 50;
+
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    this.nextSlide();
+                } else {
+                    this.prevSlide();
+                }
+            }
+        }
+
+        handleKeyPress(e) {
+            if (e.key === 'ArrowLeft') {
+                this.prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                this.nextSlide();
+            }
+        }
+
+        startAutoPlay() {
+            setInterval(() => {
+                this.nextSlide();
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        updateAriaLabels() {
+            this.slides.forEach((slide, index) => {
+                const isActive = index === this.currentIndex;
+                slide.setAttribute('aria-hidden', !isActive);
+
+                const card = slide.querySelector('.gallery-card');
+                if (card) {
+                    card.setAttribute('aria-current', isActive ? 'true' : 'false');
+                }
+            });
+        }
+    }
+
+    // Initialize carousel when DOM is loaded
+    const galleryCarousel = new GalleryCarousel();
 });
 
 // Additional Mobile Navigation Styles

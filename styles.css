@@ -119,6 +119,8 @@ body {
     height: 70px;
     width: auto;
     filter: none;
+    mix-blend-mode: multiply;
+    background-color: transparent;
 }
 
 .nav-menu {

@@ -466,13 +466,15 @@ body {
 .carousel-container {
     position: relative;
     width: 100%;
-    height: 600px;
-    perspective: 2000px;
+    height: 800px;
+    perspective: 3000px;
+    perspective-origin: 50% 20%;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    margin: 40px 0;
+    overflow: visible;
+    margin: 60px 0;
+    transform-style: preserve-3d;
 }
 
 .carousel {
@@ -498,14 +500,14 @@ body {
 
 .carousel-slide {
     position: absolute;
-    width: 400px;
-    height: 320px;
-    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transform-origin: center center -800px;
+    width: 500px;
+    height: 350px;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
     z-index: 1;
-    border-radius: 24px;
+    border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     will-change: transform, opacity;
 }
 

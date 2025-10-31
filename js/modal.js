@@ -70,7 +70,6 @@
         if (!card) return;
         
         const index = Array.from(carousel.children).indexOf(card);
-        cards.push(card);
         openModal(index);
     });
 

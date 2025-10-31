@@ -6,15 +6,15 @@
   
   // Image data with captions
   const images = [
-    { src: 'launch1.jpg', caption: 'Corporate Event Lighting Setup', alt: 'Elegant corporate event lighting display' },
-    { src: 'launch2.jpg', caption: 'Wedding Reception Sound System', alt: 'Premium sound system at an elegant wedding' },
-    { src: 'launch3.jpg', caption: 'Festival Stage Production', alt: 'Large-scale festival stage with lighting effects' },
-    { src: 'launch4.jpg', caption: 'Concert Lighting Design', alt: 'Dynamic concert lighting arrangement' },
-    { src: 'launch5.jpg', caption: 'Private Party Setup', alt: 'Intimate private party lighting and sound' },
-    { src: 'launch6.jpg', caption: 'Gala Event Production', alt: 'Sophisticated gala event production setup' },
-    { src: 'launch7.jpg', caption: 'Outdoor Event Lighting', alt: 'Stunning outdoor event lighting design' },
-    { src: 'launch8.jpg', caption: 'Club Sound Installation', alt: 'Professional club sound system setup' },
-    { src: 'launch9.jpg', caption: 'Special Effects Display', alt: 'Impressive special effects and lighting show' }
+    { src: 'images/launch1.jpg', caption: 'Corporate Event Lighting Setup', alt: 'Elegant corporate event lighting display' },
+    { src: 'images/launch2.jpg', caption: 'Wedding Reception Sound System', alt: 'Premium sound system at an elegant wedding' },
+    { src: 'images/launch3.jpg', caption: 'Festival Stage Production', alt: 'Large-scale festival stage with lighting effects' },
+    { src: 'images/launch4.jpg', caption: 'Concert Lighting Design', alt: 'Dynamic concert lighting arrangement' },
+    { src: 'images/launch5.jpg', caption: 'Private Party Setup', alt: 'Intimate private party lighting and sound' },
+    { src: 'images/launch6.jpg', caption: 'Gala Event Production', alt: 'Sophisticated gala event production setup' },
+    { src: 'images/launch7.jpg', caption: 'Outdoor Event Lighting', alt: 'Stunning outdoor event lighting design' },
+    { src: 'images/launch8.jpg', caption: 'Club Sound Installation', alt: 'Professional club sound system setup' },
+    { src: 'images/launch9.jpg', caption: 'Special Effects Display', alt: 'Impressive special effects and lighting show' }
   ];
 
   // Create cards

@@ -380,6 +380,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Glass Cards Hover Animation
+    const glassCards = document.querySelectorAll('.glass-card');
     glassCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px) scale(1.02)';

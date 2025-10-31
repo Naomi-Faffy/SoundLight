@@ -1,7 +1,7 @@
 #carousel {
   position: relative;
   width: 100%;
-  height: 620px; /* slightly reduced from 720 to better match original spacing */
+  height: 640px; /* balanced height to match reference without squashing */
   perspective: 1000px;
   transform-style: preserve-3d;
   display: flex;
@@ -11,8 +11,8 @@
 
 .card {
   position: absolute;
-  /* portrait/vertical cards like the reference: narrower width, taller height */
-  width: 36%;
+  /* larger cards that scale with viewport but keep natural proportions */
+  width: min(720px, 48%); /* allow cards to use a large portion of page width on desktop */
   aspect-ratio: 3 / 4; /* portrait orientation to match reference image */
   height: auto;
   left: 50%;
@@ -33,38 +33,38 @@
 }
 
 .card[data-status="active"] {
-  transform: translate(-50%, -50%) translateX(0) translateZ(0) scale(1.12) translateY(-30px);
+  transform: translate(-50%, -50%) translateX(0) translateZ(0) scale(1.08) translateY(-20px);
   opacity: 1;
   z-index: 20;
-  box-shadow: 0 50px 120px rgba(10, 20, 40, 0.45);
+  box-shadow: 0 48px 110px rgba(10, 20, 40, 0.42);
 }
 
 .card[data-status="before"] {
-  transform: translate(-50%, -50%) translateX(-22%) rotateY(-6deg) translateY(6px) scale(0.92);
-  opacity: 0.94;
-  z-index: 10;
-  box-shadow: 0 20px 48px rgba(0,0,0,0.16);
+  transform: translate(-50%, -50%) translateX(-40%) rotateY(-6deg) translateY(6px) scale(0.94);
+  opacity: 0.95;
+  z-index: 12;
+  box-shadow: 0 22px 48px rgba(0,0,0,0.14);
 }
 
 .card[data-status="after"] {
-  transform: translate(-50%, -50%) translateX(22%) rotateY(6deg) translateY(6px) scale(0.92);
-  opacity: 0.94;
-  z-index: 10;
-  box-shadow: 0 20px 48px rgba(0,0,0,0.16);
+  transform: translate(-50%, -50%) translateX(40%) rotateY(6deg) translateY(6px) scale(0.94);
+  opacity: 0.95;
+  z-index: 12;
+  box-shadow: 0 22px 48px rgba(0,0,0,0.14);
 }
 
 .card[data-status="behind"] {
-  transform: translate(-50%, -50%) translateX(-44%) rotateY(-10deg) translateY(28px) scale(0.72);
-  opacity: 0.55;
-  z-index: 6;
-  box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+  transform: translate(-50%, -50%) translateX(-80%) rotateY(-10deg) translateY(34px) scale(0.74);
+  opacity: 0.56;
+  z-index: 8;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
 }
 
 .card[data-status="ahead"] {
-  transform: translate(-50%, -50%) translateX(44%) rotateY(10deg) translateY(28px) scale(0.72);
-  opacity: 0.55;
-  z-index: 6;
-  box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+  transform: translate(-50%, -50%) translateX(80%) rotateY(10deg) translateY(34px) scale(0.74);
+  opacity: 0.56;
+  z-index: 8;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
 }
 
 /* Caption for each card - visible only on active card */

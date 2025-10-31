@@ -118,9 +118,12 @@ body {
 .nav-logo img {
     height: 70px;
     width: auto;
-    filter: none;
+    filter: contrast(1) brightness(1);
     mix-blend-mode: multiply;
-    background-color: transparent;
+    background: none !important;
+    background-color: transparent !important;
+    -webkit-background-clip: content-box;
+    background-clip: content-box;
 }
 
 .nav-menu {

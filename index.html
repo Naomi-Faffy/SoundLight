@@ -395,21 +395,103 @@
             updateCards();
         })();
         </script>
-        <script>
-        // Inlined modal JS
-        (function(){
-            const modalContainer=document.createElement('div'); modalContainer.className='modal-container'; modalContainer.setAttribute('role','dialog'); modalContainer.setAttribute('aria-modal','true'); modalContainer.setAttribute('aria-hidden','true'); modalContainer.innerHTML=`<div class="modal-overlay"></div><div class="modal-content"><button class="modal-close" aria-label="Close modal">×</button><button class="modal-prev" aria-label="Previous image">❮</button><button class="modal-next" aria-label="Next image">❯</button><div class="modal-image-container"><img src="" alt="" class="modal-image"></div><div class="modal-caption"></div></div>`; document.body.appendChild(modalContainer);
-            const carousel=document.getElementById('carousel'); const modalImage=modalContainer.querySelector('.modal-image'); const modalCaption=modalContainer.querySelector('.modal-caption'); const modalClose=modalContainer.querySelector('.modal-close'); const modalPrev=modalContainer.querySelector('.modal-prev'); const modalNext=modalContainer.querySelector('.modal-next'); const modalOverlay=modalContainer.querySelector('.modal-overlay'); let currentModalIndex=0; let cards=[];
-            function updateModalContent(index){ cards=Array.from(carousel.querySelectorAll('.card')); const card=cards[index]; if(!card) return; const img=card.querySelector('img'); modalImage.src=img.src; modalImage.alt=img.alt; modalCaption.textContent=card.dataset.caption||''; currentModalIndex=index; }
-            function openModal(index){ updateModalContent(index); modalContainer.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-            function closeModal(){ modalContainer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
-            function showPrevImage(){ currentModalIndex=(currentModalIndex-1+cards.length)%cards.length; updateModalContent(currentModalIndex); }
-            function showNextImage(){ currentModalIndex=(currentModalIndex+1)%cards.length; updateModalContent(currentModalIndex); }
-            carousel.addEventListener('click',(e)=>{ const card=e.target.closest('.card'); if(!card) return; const index=Array.from(carousel.children).indexOf(card); cards=Array.from(carousel.querySelectorAll('.card')); openModal(index); });
-            modalClose.addEventListener('click',closeModal); modalOverlay.addEventListener('click',closeModal); modalPrev.addEventListener('click',showPrevImage); modalNext.addEventListener('click',showNextImage);
-            document.addEventListener('keydown',(e)=>{ if(modalContainer.getAttribute('aria-hidden')==='true') return; switch(e.key){ case 'Escape': closeModal(); break; case 'ArrowLeft': showPrevImage(); break; case 'ArrowRight': showNextImage(); break; } });
-            let touchStartX=0; modalContainer.addEventListener('touchstart',(e)=>{ touchStartX=e.touches[0].clientX; }); modalContainer.addEventListener('touchend',(e)=>{ const touchEndX=e.changedTouches[0].clientX; const diff=touchStartX-touchEndX; if(Math.abs(diff)>50){ if(diff>0) showNextImage(); else showPrevImage(); } });
-        })();
-        </script>
+            <script>
+            // Inlined modal JS - shows 5-item stage with center prominence
+            (function(){
+                const carousel = document.getElementById('carousel');
+                const modalContainer = document.createElement('div');
+                modalContainer.className = 'modal-container';
+                modalContainer.setAttribute('role', 'dialog');
+                modalContainer.setAttribute('aria-modal', 'true');
+                modalContainer.setAttribute('aria-hidden', 'true');
+                modalContainer.innerHTML = `
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <button class="modal-close" aria-label="Close modal">×</button>
+                        <div class="modal-stage" role="list"></div>
+                        <div class="modal-controls">
+                            <button class="modal-prev" aria-label="Previous image">❮</button>
+                            <button class="modal-next" aria-label="Next image">❯</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modalContainer);
+
+                const stage = modalContainer.querySelector('.modal-stage');
+                const modalClose = modalContainer.querySelector('.modal-close');
+                const modalPrev = modalContainer.querySelector('.modal-prev');
+                const modalNext = modalContainer.querySelector('.modal-next');
+                const modalOverlay = modalContainer.querySelector('.modal-overlay');
+
+                let currentIndex = 0;
+
+                function renderStage(centerIndex){
+                    const cards = Array.from(carousel.querySelectorAll('.card'));
+                    const total = cards.length;
+                    stage.innerHTML = '';
+                    for(let offset = -2; offset <= 2; offset++){
+                        const idx = (centerIndex + offset + total) % total;
+                        const item = document.createElement('div');
+                        item.className = `modal-item pos${offset}`;
+                        const img = document.createElement('img');
+                        img.src = cards[idx].querySelector('img').src;
+                        img.alt = cards[idx].querySelector('img').alt || `Image ${idx+1}`;
+                        item.appendChild(img);
+                        stage.appendChild(item);
+                    }
+                }
+
+                function openModal(atIndex){
+                    currentIndex = atIndex;
+                    renderStage(currentIndex);
+                    modalContainer.setAttribute('aria-hidden','false');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeModal(){
+                    modalContainer.setAttribute('aria-hidden','true');
+                    document.body.style.overflow = '';
+                }
+
+                function showPrev(){
+                    const total = carousel.querySelectorAll('.card').length;
+                    currentIndex = (currentIndex - 1 + total) % total;
+                    renderStage(currentIndex);
+                }
+
+                function showNext(){
+                    const total = carousel.querySelectorAll('.card').length;
+                    currentIndex = (currentIndex + 1) % total;
+                    renderStage(currentIndex);
+                }
+
+                // Open modal when clicking a card
+                carousel.addEventListener('click',(e)=>{
+                    const card = e.target.closest('.card');
+                    if(!card) return;
+                    const index = Array.from(carousel.children).indexOf(card);
+                    openModal(index);
+                });
+
+                modalClose.addEventListener('click', closeModal);
+                modalOverlay.addEventListener('click', closeModal);
+                modalPrev.addEventListener('click', showPrev);
+                modalNext.addEventListener('click', showNext);
+
+                // keyboard
+                document.addEventListener('keydown',(e)=>{
+                    if(modalContainer.getAttribute('aria-hidden') === 'true') return;
+                    if(e.key === 'Escape') closeModal();
+                    if(e.key === 'ArrowLeft') showPrev();
+                    if(e.key === 'ArrowRight') showNext();
+                });
+
+                // touch swipe on stage
+                let touchStartX = 0;
+                stage.addEventListener('touchstart', (e)=>{ touchStartX = e.touches[0].clientX; });
+                stage.addEventListener('touchend', (e)=>{ const touchEndX = e.changedTouches[0].clientX; const diff = touchStartX - touchEndX; if(Math.abs(diff) > 40){ if(diff > 0) showNext(); else showPrev(); } });
+
+            })();
+            </script>
 </body>
 </html>

@@ -116,7 +116,7 @@ body {
 }
 
 .nav-logo img {
-    height: 630px; /* tripled size (3x original 210px) */
+    height: 210px; /* reduced back to original size */
     width: auto;
     filter: contrast(1) brightness(1);
     mix-blend-mode: multiply;
@@ -129,7 +129,7 @@ body {
 /* Responsive: cap navbar logo on smaller screens so it doesn't crowd the header */
 @media (max-width: 768px) {
     .nav-logo img {
-        height: 270px; /* smaller for mobile/tablet */
+        height: 90px; /* smaller for mobile/tablet */
     }
 }
 
@@ -281,29 +281,29 @@ body {
 }
 
 .cta-button.primary {
-    background: var(--primary-blue);
-    color: var(--cool-white);
-    border-color: var(--primary-blue);
-}
-
-.cta-button.primary:hover {
-    background: transparent;
-    color: var(--primary-blue);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(30, 144, 255, 0.3);
-}
-
-.cta-button.secondary {
     background: transparent;
     color: var(--pearl-white);
     border-color: var(--pearl-white);
 }
 
-.cta-button.secondary:hover {
-    background: var(--pearl-white);
-    color: var(--jet-black);
+.cta-button.primary:hover {
+    background: var(--primary-blue);
+    color: var(--cool-white);
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(248, 248, 248, 0.2);
+    box-shadow: 0 10px 30px rgba(30, 144, 255, 0.3);
+}
+
+.cta-button.secondary {
+    background: var(--primary-blue);
+    color: var(--cool-white);
+    border-color: var(--primary-blue);
+}
+
+.cta-button.secondary:hover {
+    background: transparent;
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(30, 144, 255, 0.3);
 }
 
 .scroll-indicator {

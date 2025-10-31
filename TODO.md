@@ -1,6 +1,4 @@
-# TODO List for Favicon and Styling Updates
+# TODO List for Footer Logo and Overlap Fix
 
-- [x] Add favicon link using "sound.png"
-- [x] Change all white text in hero section to black
-- [x] Fix overlap between services and trust sections
-- [x] Make background hues after events section more blackish
+- [x] Double footer logo height from 40px to 80px in styles.css
+- [x] Add margin-bottom to services section to prevent trust section overlap

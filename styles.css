@@ -465,9 +465,9 @@ body {
 
 .carousel-container {
     position: relative;
-    height: 500px;
+    height: 600px;
     overflow: hidden;
-    perspective: 1200px;
+    perspective: 1500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -485,47 +485,61 @@ body {
 
 .carousel-slide {
     position: absolute;
-    width: 400px;
-    height: 350px;
-    transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    width: 450px;
+    height: 400px;
+    transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform-origin: center center;
     z-index: 1;
 }
 
 .carousel-slide.active {
-    z-index: 4;
-    transform: scale(1.15) translateZ(100px) rotateY(0deg);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+    transform: scale(1.2) translateZ(150px) rotateY(0deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 
 .carousel-slide.left {
-    z-index: 3;
-    transform: scale(0.9) translateX(-200px) translateZ(-50px) rotateY(-6deg);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    opacity: 0.9;
+    z-index: 4;
+    transform: scale(0.95) translateX(-250px) translateZ(-30px) rotateY(-8deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    opacity: 0.95;
 }
 
 .carousel-slide.right {
-    z-index: 3;
-    transform: scale(0.9) translateX(200px) translateZ(-50px) rotateY(6deg);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    opacity: 0.9;
-}
-
-.carousel-slide.far-left,
-.carousel-slide.far-right {
-    z-index: 2;
-    transform: scale(0.7) translateZ(-100px);
-    opacity: 0.5;
-    filter: blur(2px);
+    z-index: 4;
+    transform: scale(0.95) translateX(250px) translateZ(-30px) rotateY(8deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    opacity: 0.95;
 }
 
 .carousel-slide.far-left {
-    transform: scale(0.7) translateX(-350px) translateZ(-100px) rotateY(-12deg);
+    z-index: 3;
+    transform: scale(0.8) translateX(-400px) translateZ(-80px) rotateY(-15deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    opacity: 0.7;
+    filter: blur(1px);
 }
 
 .carousel-slide.far-right {
-    transform: scale(0.7) translateX(350px) translateZ(-100px) rotateY(12deg);
+    z-index: 3;
+    transform: scale(0.8) translateX(400px) translateZ(-80px) rotateY(15deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    opacity: 0.7;
+    filter: blur(1px);
+}
+
+.carousel-slide.hidden-left {
+    z-index: 2;
+    transform: scale(0.6) translateX(-550px) translateZ(-120px) rotateY(-20deg);
+    opacity: 0.4;
+    filter: blur(2px);
+}
+
+.carousel-slide.hidden-right {
+    z-index: 2;
+    transform: scale(0.6) translateX(550px) translateZ(-120px) rotateY(20deg);
+    opacity: 0.4;
+    filter: blur(2px);
 }
 
 .gallery-card {

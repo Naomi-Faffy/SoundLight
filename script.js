@@ -519,6 +519,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     slide.classList.add('hidden-right');
                 } else if (relativeIndex === totalSlides - 3) {
                     slide.classList.add('hidden-left');
+                } else if (relativeIndex === 4) {
+                    slide.classList.add('hidden-far-right');
+                } else if (relativeIndex === totalSlides - 4) {
+                    slide.classList.add('hidden-far-left');
                 }
             });
 

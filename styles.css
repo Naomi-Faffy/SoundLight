@@ -499,7 +499,6 @@ body {
     justify-content: center;
     overflow: hidden;
     margin-top: 40px;
-    margin-bottom: 80px;
 }
 
 .services::before {
@@ -558,11 +557,11 @@ body {
 
 @media (max-width: 1200px) {
     .services-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 30px;
         max-width: 900px;
     }
-    
+
     .glass-card {
         padding: 35px 25px;
     }

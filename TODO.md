@@ -1,4 +1,4 @@
-# TODO List for Home Page and Trust Section Updates
+# TODO List for Services Section Fixes
 
-- [x] Revert hero section text colors to white (title, subtitle, nav links, secondary button)
-- [x] Remove the entire trust section from index.html
+- [x] Fix services grid to show all 5 services (adjust responsive columns)
+- [x] Remove white line/band after services section (remove margin-bottom)

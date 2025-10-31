@@ -126,7 +126,7 @@ body {
 }
 
 .nav-menu a {
-    color: var(--sleek-black);
+    color: var(--pearl-white);
     text-decoration: none;
     font-weight: 500;
     font-size: 14px;
@@ -215,7 +215,7 @@ body {
     font-family: var(--font-serif);
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 700;
-    color: var(--sleek-black);
+    color: var(--pearl-white);
     margin-bottom: 30px;
     line-height: 1.1;
 }
@@ -235,7 +235,7 @@ body {
 
 .hero-subtitle {
     font-size: 20px;
-    color: var(--sleek-black);
+    color: var(--cool-white);
     margin-bottom: 50px;
     font-weight: 300;
     opacity: 0;
@@ -282,8 +282,8 @@ body {
 
 .cta-button.secondary {
     background: transparent;
-    color: var(--sleek-black);
-    border-color: var(--sleek-black);
+    color: var(--pearl-white);
+    border-color: var(--pearl-white);
 }
 
 .cta-button.secondary:hover {

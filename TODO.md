@@ -1,8 +1,4 @@
-# TODO List for Events Page Redesign
+# TODO List for Home Page and Trust Section Updates
 
-- [x] Change collection section background to white
-- [x] Update section title and subtitle colors to black
-- [x] Update event card text colors (titles, descriptions to black)
-- [x] Update price and button colors to blue
-- [x] Remove black border from collection section
-- [x] Adjust card backgrounds for white theme
+- [x] Revert hero section text colors to white (title, subtitle, nav links, secondary button)
+- [x] Remove the entire trust section from index.html

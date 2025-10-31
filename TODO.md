@@ -1,5 +1,6 @@
-# TODO List for Website Updates
+# TODO List for Content Updates
 
-- [x] Remove "Available on Request" text from all 9 car-price divs in index.html
-- [x] Enlarge logo height from 50px to 100px in styles.css (.nav-logo img)
-- [x] Change collection section background to black in styles.css (.collection)
+- [x] Update hero subtitle to "Party and Entertainment Service for Corporate, Private & Social Events"
+- [x] Change services section to reflect: Pro Lit DJs, Sound, Special Effects, Lighting, LED Screens
+- [x] Update collection section title to "EXCLUSIVE LUXURY CLASSY EVENTS"
+- [x] Update select event descriptions to incorporate DJs, special effects, LED screens

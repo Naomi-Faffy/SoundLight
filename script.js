@@ -483,6 +483,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Keyboard navigation
             document.addEventListener('keydown', (e) => this.handleKeyPress(e));
 
+            // Pause auto-play on hover
+            this.carousel.addEventListener('mouseenter', () => this.pauseAutoPlay());
+            this.carousel.addEventListener('mouseleave', () => this.resumeAutoPlay());
+
             // Auto-play (optional)
             this.startAutoPlay();
 
@@ -491,9 +495,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         updateCarousel() {
-            // Update transform
-            const translateX = -this.currentIndex * 100;
-            this.carousel.style.transform = `translateX(${translateX}%)`;
+            // Remove all positioning classes
+            this.slides.forEach(slide => {
+                slide.className = 'carousel-slide';
+            });
+
+            // Apply positioning classes based on current index
+            const totalSlides = this.totalSlides;
+            this.slides.forEach((slide, index) => {
+                const relativeIndex = (index - this.currentIndex + totalSlides) % totalSlides;
+
+                if (relativeIndex === 0) {
+                    slide.classList.add('active');
+                } else if (relativeIndex === 1) {
+                    slide.classList.add('right');
+                } else if (relativeIndex === totalSlides - 1) {
+                    slide.classList.add('left');
+                } else if (relativeIndex === 2) {
+                    slide.classList.add('far-right');
+                } else if (relativeIndex === totalSlides - 2) {
+                    slide.classList.add('far-left');
+                }
+            });
 
             // Update active pill
             this.pills.forEach((pill, index) => {
@@ -507,16 +530,19 @@ document.addEventListener('DOMContentLoaded', function() {
         goToSlide(index) {
             this.currentIndex = Math.max(0, Math.min(index, this.totalSlides - 1));
             this.updateCarousel();
+            this.resetAutoPlay();
         }
 
         nextSlide() {
             this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
             this.updateCarousel();
+            this.resetAutoPlay();
         }
 
         prevSlide() {
             this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
             this.updateCarousel();
+            this.resetAutoPlay();
         }
 
         setupTouchEvents() {
@@ -554,10 +580,31 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        handleKeyPress(e) {
+            if (e.key === 'ArrowLeft') {
+                this.prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                this.nextSlide();
+            }
+        }
+
         startAutoPlay() {
-            setInterval(() => {
+            this.autoPlayInterval = setInterval(() => {
                 this.nextSlide();
             }, 5000); // Change slide every 5 seconds
+        }
+
+        resetAutoPlay() {
+            clearInterval(this.autoPlayInterval);
+            this.startAutoPlay();
+        }
+
+        pauseAutoPlay() {
+            clearInterval(this.autoPlayInterval);
+        }
+
+        resumeAutoPlay() {
+            this.startAutoPlay();
         }
 
         updateAriaLabels() {

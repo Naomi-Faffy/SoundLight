@@ -17,8 +17,6 @@
     
     <link rel="icon" type="image/png" href="sound.png">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="carousel.css">
-    <link rel="stylesheet" href="css/modal.css">
 </head>
 <body>
 
@@ -102,6 +100,23 @@
             </div>
 
             <div class="carousel-root">
+                <style>
+                /* Inlined carousel CSS (original code provided) */
+                #carousel { position: relative; width: 100%; height: 640px; perspective: 1000px; transform-style: preserve-3d; display:flex; justify-content:center; align-items:center; }
+                .card { position: absolute; width: min(720px,48%); aspect-ratio:3/4; left:50%; top:50%; transform:translate(-50%,-50%); border-radius:22px; overflow:hidden; transition:transform 0.7s cubic-bezier(0.22,0.9,0.33,1), opacity 0.45s; box-shadow:0 14px 40px rgba(0,0,0,0.22); cursor:pointer; }
+                .card img { width:100%; height:100%; object-fit:cover; display:block; }
+                .card[data-status="active"] { transform: translate(-50%, -50%) translateX(0) translateZ(0) scale(1.08) translateY(-20px); opacity:1; z-index:20; box-shadow:0 48px 110px rgba(10,20,40,0.42); }
+                .card[data-status="before"] { transform: translate(-50%, -50%) translateX(-40%) rotateY(-6deg) translateY(6px) scale(0.94); opacity:0.95; z-index:12; }
+                .card[data-status="after"] { transform: translate(-50%, -50%) translateX(40%) rotateY(6deg) translateY(6px) scale(0.94); opacity:0.95; z-index:12; }
+                .card[data-status="behind"] { transform: translate(-50%, -50%) translateX(-80%) rotateY(-10deg) translateY(34px) scale(0.74); opacity:0.56; z-index:8; }
+                .card[data-status="ahead"] { transform: translate(-50%, -50%) translateX(80%) rotateY(10deg) translateY(34px) scale(0.74); opacity:0.56; z-index:8; }
+                .card .caption { position:absolute; left:50%; bottom:20px; transform:translateX(-50%) translateY(8px); background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.45)); color:#fff; padding:10px 16px; border-radius:14px; max-width:80%; text-align:center; opacity:0; pointer-events:none; transition:opacity .4s ease, transform .35s ease; backdrop-filter: blur(4px); }
+                .card[data-status="active"] .caption { opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto; }
+                .controls { display:flex; justify-content:center; gap:32px; margin-top:48px; }
+                .nav { width:48px; height:48px; border-radius:50%; background:#fff; border:2px solid rgba(0,0,0,0.06); display:grid; place-items:center; cursor:pointer; transition:transform .12s, box-shadow .12s; }
+                .nav:hover { transform:translateY(-4px); box-shadow:0 8px 20px rgba(12,24,48,0.08); }
+                </style>
+
                 <div id="carousel" class="carousel" aria-roledescription="carousel"></div>
                 <div class="controls">
                     <button id="prev" class="nav" aria-label="Previous">◀</button>
@@ -331,7 +346,51 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="js/carousel.js"></script>
-    <script src="js/modal.js"></script>
+        <script>
+        // Inlined carousel JS (original code provided) - generates cards from launch1..launch17
+        (function(){
+            const carousel = document.getElementById('carousel');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            const images = [];
+            for (let i = 1; i <= 17; i++) images.push({ src: `launch${i}.jpg`, caption: `Launch ${i}`, alt: `Launch image ${i}` });
+            images.forEach((image, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.setAttribute('data-index', index);
+                card.setAttribute('data-caption', image.caption);
+                card.setAttribute('role', 'img');
+                card.setAttribute('aria-label', image.alt);
+                const img = document.createElement('img'); img.src = image.src; img.alt = image.alt; img.loading = 'lazy';
+                const caption = document.createElement('div'); caption.className = 'caption'; caption.innerHTML = `<h3>${image.caption}</h3>`;
+                card.appendChild(img); card.appendChild(caption); carousel.appendChild(card);
+            });
+            let activeIndex = 0; const totalCards = images.length;
+            function updateCards(){ const cards=[...carousel.children]; cards.forEach((card, index)=>{ const position=(index-activeIndex+totalCards)%totalCards; let status; if(position===0) status='active'; else if(position===1) status='after'; else if(position===totalCards-1) status='before'; else if(position<totalCards-1) status='ahead'; else status='behind'; card.dataset.status=status; }); }
+            function moveNext(){ activeIndex=(activeIndex+1)%totalCards; updateCards(); }
+            function movePrev(){ activeIndex=(activeIndex-1+totalCards)%totalCards; updateCards(); }
+            nextBtn.addEventListener('click', moveNext); prevBtn.addEventListener('click', movePrev);
+            document.addEventListener('keydown',(e)=>{ if(e.key==='ArrowLeft') movePrev(); if(e.key==='ArrowRight') moveNext(); });
+            let touchStartX=0; carousel.addEventListener('touchstart',(e)=>{ touchStartX=e.touches[0].clientX; });
+            carousel.addEventListener('touchend',(e)=>{ const touchEndX=e.changedTouches[0].clientX; const diff=touchStartX-touchEndX; if(Math.abs(diff)>50){ if(diff>0) moveNext(); else movePrev(); } });
+            updateCards();
+        })();
+        </script>
+        <script>
+        // Inlined modal JS
+        (function(){
+            const modalContainer=document.createElement('div'); modalContainer.className='modal-container'; modalContainer.setAttribute('role','dialog'); modalContainer.setAttribute('aria-modal','true'); modalContainer.setAttribute('aria-hidden','true'); modalContainer.innerHTML=`<div class="modal-overlay"></div><div class="modal-content"><button class="modal-close" aria-label="Close modal">×</button><button class="modal-prev" aria-label="Previous image">❮</button><button class="modal-next" aria-label="Next image">❯</button><div class="modal-image-container"><img src="" alt="" class="modal-image"></div><div class="modal-caption"></div></div>`; document.body.appendChild(modalContainer);
+            const carousel=document.getElementById('carousel'); const modalImage=modalContainer.querySelector('.modal-image'); const modalCaption=modalContainer.querySelector('.modal-caption'); const modalClose=modalContainer.querySelector('.modal-close'); const modalPrev=modalContainer.querySelector('.modal-prev'); const modalNext=modalContainer.querySelector('.modal-next'); const modalOverlay=modalContainer.querySelector('.modal-overlay'); let currentModalIndex=0; let cards=[];
+            function updateModalContent(index){ cards=Array.from(carousel.querySelectorAll('.card')); const card=cards[index]; if(!card) return; const img=card.querySelector('img'); modalImage.src=img.src; modalImage.alt=img.alt; modalCaption.textContent=card.dataset.caption||''; currentModalIndex=index; }
+            function openModal(index){ updateModalContent(index); modalContainer.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+            function closeModal(){ modalContainer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+            function showPrevImage(){ currentModalIndex=(currentModalIndex-1+cards.length)%cards.length; updateModalContent(currentModalIndex); }
+            function showNextImage(){ currentModalIndex=(currentModalIndex+1)%cards.length; updateModalContent(currentModalIndex); }
+            carousel.addEventListener('click',(e)=>{ const card=e.target.closest('.card'); if(!card) return; const index=Array.from(carousel.children).indexOf(card); cards=Array.from(carousel.querySelectorAll('.card')); openModal(index); });
+            modalClose.addEventListener('click',closeModal); modalOverlay.addEventListener('click',closeModal); modalPrev.addEventListener('click',showPrevImage); modalNext.addEventListener('click',showNextImage);
+            document.addEventListener('keydown',(e)=>{ if(modalContainer.getAttribute('aria-hidden')==='true') return; switch(e.key){ case 'Escape': closeModal(); break; case 'ArrowLeft': showPrevImage(); break; case 'ArrowRight': showNextImage(); break; } });
+            let touchStartX=0; modalContainer.addEventListener('touchstart',(e)=>{ touchStartX=e.touches[0].clientX; }); modalContainer.addEventListener('touchend',(e)=>{ const touchEndX=e.changedTouches[0].clientX; const diff=touchStartX-touchEndX; if(Math.abs(diff)>50){ if(diff>0) showNextImage(); else showPrevImage(); } });
+        })();
+        </script>
 </body>
 </html>

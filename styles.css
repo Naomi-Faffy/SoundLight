@@ -466,9 +466,9 @@ body {
 .carousel-container {
     position: relative;
     width: 100%;
-    height: 800px;
-    perspective: 3000px;
-    perspective-origin: 50% 20%;
+    height: 900px;
+    perspective: 2000px;
+    perspective-origin: 50% 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -485,6 +485,8 @@ body {
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
+    transform-origin: center center;
+    will-change: transform;
 }
 
 /* soft radial vignette to enhance depth */

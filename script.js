@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.prevBtn = document.querySelector('.nav-arrow.prev');
             this.nextBtn = document.querySelector('.nav-arrow.next');
             this.pills = document.querySelectorAll('.pill:not(.view-more)');
-            this.currentIndex = 4; // Start with the 5th image (index 4) as center
+            this.currentIndex = 0; // Start with the first image as center
             this.totalSlides = this.slides.length;
             this.autoplayDelay = 3500; // ms
             this.autoplayTimer = null;

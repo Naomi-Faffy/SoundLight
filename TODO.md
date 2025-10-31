@@ -1,4 +1,8 @@
-# TODO List for Footer Logo and Overlap Fix
+# TODO List for Events Page Redesign
 
-- [x] Double footer logo height from 40px to 80px in styles.css
-- [x] Add margin-bottom to services section to prevent trust section overlap
+- [x] Change collection section background to white
+- [x] Update section title and subtitle colors to black
+- [x] Update event card text colors (titles, descriptions to black)
+- [x] Update price and button colors to blue
+- [x] Remove black border from collection section
+- [x] Adjust card backgrounds for white theme

@@ -116,7 +116,7 @@ body {
 }
 
 .nav-logo img {
-    height: 140px; /* doubled size per request (was 70px) */
+    height: 210px; /* tripled size (3x original 70px) */
     width: auto;
     filter: contrast(1) brightness(1);
     mix-blend-mode: multiply;
@@ -124,6 +124,13 @@ body {
     background-color: transparent !important;
     -webkit-background-clip: content-box;
     background-clip: content-box;
+}
+
+/* Responsive: cap navbar logo on smaller screens so it doesn't crowd the header */
+@media (max-width: 768px) {
+    .nav-logo img {
+        height: 90px; /* smaller for mobile/tablet */
+    }
 }
 
 .nav-menu {

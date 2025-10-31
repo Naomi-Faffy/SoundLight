@@ -485,37 +485,46 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         updateCarousel() {
-            // Remove all positioning classes
-            this.slides.forEach(slide => {
+            // Remove all positioning classes and set base
+            this.slides.forEach((slide) => {
                 slide.className = 'carousel-slide';
+                slide.style.zIndex = '';
             });
 
-            // Apply positioning classes based on current index
+            // For circular behavior compute shortest relative index
             this.slides.forEach((slide, index) => {
-                const relativeIndex = index - this.currentIndex;
+                // Circular difference, range: -floor(n/2) .. +floor(n/2)
+                let diff = (index - this.currentIndex + this.totalSlides) % this.totalSlides;
+                if (diff > Math.floor(this.totalSlides / 2)) diff -= this.totalSlides;
 
-                if (relativeIndex === 0) {
+                // Clamp to -4..4 (we show 9 positions)
+                if (diff < -4) diff = -4;
+                if (diff > 4) diff = 4;
+
+                // Apply classes based on diff
+                if (diff === 0) {
                     slide.classList.add('active');
-                } else if (relativeIndex === -4) {
-                    slide.classList.add('left-4');
-                } else if (relativeIndex === -3) {
-                    slide.classList.add('left-3');
-                } else if (relativeIndex === -2) {
-                    slide.classList.add('left-2');
-                } else if (relativeIndex === -1) {
-                    slide.classList.add('left-1');
-                } else if (relativeIndex === 1) {
-                    slide.classList.add('right-1');
-                } else if (relativeIndex === 2) {
-                    slide.classList.add('right-2');
-                } else if (relativeIndex === 3) {
-                    slide.classList.add('right-3');
-                } else if (relativeIndex === 4) {
-                    slide.classList.add('right-4');
+                    slide.style.zIndex = 1000;
+                } else if (diff === -4) {
+                    slide.classList.add('left-4'); slide.style.zIndex = 10;
+                } else if (diff === -3) {
+                    slide.classList.add('left-3'); slide.style.zIndex = 90;
+                } else if (diff === -2) {
+                    slide.classList.add('left-2'); slide.style.zIndex = 200;
+                } else if (diff === -1) {
+                    slide.classList.add('left-1'); slide.style.zIndex = 400;
+                } else if (diff === 1) {
+                    slide.classList.add('right-1'); slide.style.zIndex = 400;
+                } else if (diff === 2) {
+                    slide.classList.add('right-2'); slide.style.zIndex = 200;
+                } else if (diff === 3) {
+                    slide.classList.add('right-3'); slide.style.zIndex = 90;
+                } else if (diff === 4) {
+                    slide.classList.add('right-4'); slide.style.zIndex = 10;
                 }
             });
 
-            // Update active pill
+            // Update active pill if pills present (safety)
             this.pills.forEach((pill, index) => {
                 pill.classList.toggle('active', index === this.currentIndex);
             });
